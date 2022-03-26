@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createContext, FunctionComponent, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PeriodicTable from "./Components/PeriodicTable";
+import ShellConfiguration from "./Components/Practice/ShellConfiguration";
+import DefaultLayout from "./Page Layouts/Default";
+import QuizzesLayout from "./Page Layouts/QuizSelection";
 
-function App() {
+export const darkModeContext = createContext(null);
+
+const App: FunctionComponent = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <darkModeContext.Provider value={{ darkMode, setDarkMode }}>
+      <div className={`${darkMode ? "dark" : ""}`}>
+        <div className="bg-60 h-[100vh] dark:bg-dark60">
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <DefaultLayout title={"Table"}>
+                    <PeriodicTable />
+                  </DefaultLayout>
+                }
+              />
+              <Route path="/practice" element={<QuizzesLayout />}></Route>
+              <Route
+                path="practice/shellconfiguration"
+                element={<ShellConfiguration> </ShellConfiguration>}
+              />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </div>
+    </darkModeContext.Provider>
   );
-}
+};
 
 export default App;
