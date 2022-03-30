@@ -1,4 +1,4 @@
-import elementJSON from "../Json/table.json";
+import elementJSON from "../Elemental Json/table.json";
 import { ElementProps } from "./Element";
 import Element from "./Element";
 

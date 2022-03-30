@@ -32,7 +32,7 @@ export interface ElementProps {
 
 export const BigElement: FC<ElementProps> = (props) => {
   return (
-    <div className={`select-none w-[135px] h-[135px]`}>
+    <div className={`select-none w-[135px] h-[135px] mx-auto`}>
       <div
         className={`text-center w-[130px] h-[130px] bg-[#${props.cpk_hex}] rounded-lg hover:brightness-125 hover:h-[128px] hover:w-[128px] group`}
       >

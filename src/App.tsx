@@ -1,7 +1,8 @@
 import { createContext, FunctionComponent, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PeriodicTable from "./Components/PeriodicTable";
-import ShellConfiguration from "./Components/Practice/ShellConfiguration";
+import ShellConfiguration from "./Components/Practice/Specific Practice/ShellConfiguration";
+import { AppRoutes } from "./Navigation/Routes";
 import DefaultLayout from "./Page Layouts/Default";
 import QuizzesLayout from "./Page Layouts/QuizSelection";
 
@@ -14,23 +15,7 @@ const App: FunctionComponent = () => {
     <darkModeContext.Provider value={{ darkMode, setDarkMode }}>
       <div className={`${darkMode ? "dark" : ""}`}>
         <div className="bg-60 h-[100vh] dark:bg-dark60">
-          <BrowserRouter>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <DefaultLayout title={"Table"}>
-                    <PeriodicTable />
-                  </DefaultLayout>
-                }
-              />
-              <Route path="/practice" element={<QuizzesLayout />}></Route>
-              <Route
-                path="practice/shellconfiguration"
-                element={<ShellConfiguration> </ShellConfiguration>}
-              />
-            </Routes>
-          </BrowserRouter>
+          <AppRoutes />
         </div>
       </div>
     </darkModeContext.Provider>

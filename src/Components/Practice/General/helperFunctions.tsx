@@ -1,0 +1,82 @@
+import { ElementProps } from "../../Element";
+
+export const romanize = (num: number) => {
+  let lookup = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1,
+    },
+    roman = "",
+    is;
+
+  for (const [key, val] of Object.entries(lookup)) {
+    while (num >= val) {
+      roman += key;
+      num -= val;
+    }
+  }
+  return roman;
+};
+
+export const ide = (name: string) => {
+  const endings: string[] = [
+    "on",
+    "ogen",
+    "ygen",
+    "ine",
+    "orus",
+    "ur",
+    "ic",
+    "ium",
+  ];
+
+  for (const ending of endings) {
+    if (name.endsWith(ending)) {
+      return name.substring(0, name.length - ending.length) + "ide";
+    }
+  }
+
+  return "error";
+};
+
+export const charge = (element: ElementProps) => {
+  if (element.shells[element.shells.length - 1] <= 4) {
+    return element.shells[element.shells.length - 1];
+  } else if (element.shells[element.shells.length - 1] > 4) {
+    return -1 * (8 - element.shells[element.shells.length - 1]);
+  } else {
+    return -1;
+  }
+};
+
+export const randomElement = (obj: { [k: string]: unknown } & object) => {
+  var keys = Object.keys(obj);
+
+  let t: ElementProps = obj[keys[(keys.length * Math.random()) << 0]];
+  return t;
+};
+
+export const lcm = (n1: number, n2: number) => {
+  return (n1 * n2) / gcd(n1, n2);
+};
+
+export const gcd = (num1: number, num2: number) => {
+  while (num1 != num2) {
+    if (num1 > num2) {
+      num1 = num1 - num2;
+    } else {
+      num2 = num2 - num1;
+    }
+  }
+  return num2;
+};

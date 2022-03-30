@@ -14,7 +14,7 @@ const QuizzesLayout: FunctionComponent<QuizzesLayoutProps> = () => {
         path="shellconfiguration/semantic"
       />
       <Quiz name="Naming Ionic Compounds" path="naming/ionic" />
-      <Quiz name="Naming covalent Compounds" path="naming/covalent" />
+      <Quiz name="Naming Covalent Compounds" path="naming/covalent" />
     </DefaultLayout>
   );
 };
