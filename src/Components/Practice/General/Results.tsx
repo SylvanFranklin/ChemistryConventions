@@ -3,7 +3,6 @@ import { TextInput } from "./TextInput";
 import { GoThreeBars } from "react-icons/go";
 import React, { useState } from "react";
 import { addScripts } from "./helperFunctions";
-import { BsQuestion } from "react-icons/bs";
 import { PracticeSettings } from "./settings";
 
 interface PracticeUIProps {

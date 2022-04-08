@@ -1,4 +1,3 @@
-import { FC } from "react";
 import React from "react";
 import { ElementProps } from "../../Element";
 
@@ -98,7 +97,7 @@ export const gcd = (num1: number, num2: number) => {
   }
   return num2;
 };
-export const addScripts= (text: string, styles?: string) => {
+export const addScripts = (text: string, styles?: string) => {
   let ret: string = text.replace(/(_\d+)/g, "<sub>$&</sub>").replace(/_/g, "");
   ret = ret.replace(/(\^\d+)/g, "<sup>$&</sup>").replace(/\^/g, "");
 
