@@ -1,6 +1,7 @@
 import elementJSON from "../Elemental Json/table.json";
 import { ElementProps } from "./Element";
 import Element from "./Element";
+import DefaultLayout from "../Page Layouts/Default";
 
 const newTable = () => {
   const rws: ElementProps[][] = [
@@ -44,9 +45,11 @@ const newTable = () => {
 const PeriodicTable = () => {
   const lms = newTable();
   return (
-    <div className="flex flex-col bg-30 dark:bg-dark30 rounded-md w-min mx-auto">
-      <div className="flex p-3 ">{lms}</div>
-    </div>
+    <DefaultLayout title="Table">
+      <div className="flex flex-col bg-30 rounded-none w-min mx-auto bg-standard">
+        <div className="flex p-3 ">{lms}</div>
+      </div>
+    </DefaultLayout>
   );
 };
 

@@ -34,7 +34,7 @@ export const BigElement: FC<ElementProps> = (props) => {
   return (
     <div className={`select-none w-[135px] h-[135px] mx-auto`}>
       <div
-        className={`text-center w-[130px] h-[130px] bg-[#${props.cpk_hex}] rounded-lg hover:brightness-125 hover:h-[128px] hover:w-[128px] group`}
+        className={`shadow-lg text-center w-[130px] h-[130px] bg-[#${props.cpk_hex}] rounded-lg hover:brightness-125 hover:h-[128px] hover:w-[128px] group`}
       >
         <h3 className="mr-24 pt-1">{props.number}</h3>
 
@@ -49,11 +49,9 @@ export const BigElement: FC<ElementProps> = (props) => {
 };
 
 const Element: FC<ElementProps> = (props) => {
-  const size: number = 45;
-
   return (
     <div
-      className={`select-none w-[45px] h-[45px] flex flex-col justify-center bg-[#${props.cpk_hex}] bg-opacity-30`}
+      className={`select-none w-[45px] h-[45px] flex flex-col justify-center border border-opacity-10 border-light-subtext`}
     >
       <div
         className={`mx-auto text-center w-[40px] h-[40px] bg-[#${props.cpk_hex}] rounded-sm hover:brightness-125 hover:h-[38px] hover:w-[38

@@ -10,7 +10,7 @@ export const TextInput: FC<TextInputProps> = (props) => {
 
   return (
     <form
-      className="w-1/2 max-w-sm mx-auto mt-14"
+      className="w-3/4 max-w-sm mx-auto"
       onSubmit={(e) => {
         e.preventDefault();
         props.response(formValue);
@@ -19,7 +19,7 @@ export const TextInput: FC<TextInputProps> = (props) => {
     >
       <div className="flex items-center py-2 border-b border-slate-500">
         <input
-          className="w-full px-2 mr-3 mt-2 leading-tight text-30 dark:text-60 bg-transparent border-none appearance-none focus:outline-none"
+          className="w-full px-2 mt-2 mr-3 leading-tight bg-transparent border-none appearance-none text-30 dark:text-60 focus:outline-none"
           type="text"
           autoFocus
           value={formValue}
@@ -27,10 +27,7 @@ export const TextInput: FC<TextInputProps> = (props) => {
             setFormValue(e.target.value);
           }}
         />
-        <button
-          className="select-none flex-shrink-0 px-2 py-1 text-lg text-30 dark:text-60 rounded bg-opacity-5 bg-slate-700 hover:bg-10 "
-          type="submit"
-        >
+        <button className="button-standard" type="submit">
           Enter
         </button>
       </div>

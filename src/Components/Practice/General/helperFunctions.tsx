@@ -1,4 +1,23 @@
+import { FC } from "react";
+import React from "react";
 import { ElementProps } from "../../Element";
+
+export function randInt(min: number, max: number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export const CheckAnswer = (input: string, answer: string) => {
+  input = input.toLowerCase().replace(/\s/g, "").replace(/^/g, "");
+  answer = answer.toLowerCase().replace(/\s/g, "").replace(/_/g, "");
+
+  if (input === answer) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 export const romanize = (num: number) => {
   let lookup = {
@@ -16,8 +35,7 @@ export const romanize = (num: number) => {
       IV: 4,
       I: 1,
     },
-    roman = "",
-    is;
+    roman = "";
 
   for (const [key, val] of Object.entries(lookup)) {
     while (num >= val) {
@@ -71,7 +89,7 @@ export const lcm = (n1: number, n2: number) => {
 };
 
 export const gcd = (num1: number, num2: number) => {
-  while (num1 != num2) {
+  while (num1 !== num2) {
     if (num1 > num2) {
       num1 = num1 - num2;
     } else {
@@ -79,4 +97,10 @@ export const gcd = (num1: number, num2: number) => {
     }
   }
   return num2;
+};
+export const addScripts= (text: string, styles?: string) => {
+  let ret: string = text.replace(/(_\d+)/g, "<sub>$&</sub>").replace(/_/g, "");
+  ret = ret.replace(/(\^\d+)/g, "<sup>$&</sup>").replace(/\^/g, "");
+
+  return <h1 dangerouslySetInnerHTML={{ __html: ret }}></h1>;
 };

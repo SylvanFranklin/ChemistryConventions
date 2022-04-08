@@ -1,24 +1,114 @@
-import { JsxElement } from "typescript";
+import { TextInput } from "./TextInput";
 
-interface ResultsProps {
-  correct: boolean;
-  correctAnswer: JsxElement;
-  userAnswer: JsxElement;
+import { GoThreeBars } from "react-icons/go";
+import React, { useState } from "react";
+import { addScripts } from "./helperFunctions";
+import { BsQuestion } from "react-icons/bs";
+import { PracticeSettings } from "./settings";
+
+interface PracticeUIProps {
+  correctAnswer: string;
+  checkAnswer: Function;
+  newQuestion: Function;
 }
 
-export const Results: React.FC<ResultsProps> = (props) => {
-  return (
-    <div className="mt-4 flex flex-col justify-center">
-      <div className="text-white bg-30 w-80 h-40 rounded-xl mx-auto flex flex-col justify-center">
-        {props.correctAnswer}
-        {props.userAnswer}
+export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
+  const [correctStreak, setCorrectStreak] = useState(0);
+  const [showingResults, setShowingResults] = useState(false);
+  const [showingSettings, setShowingSettings] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
-        <button
-          className="w-16 h-8 bg-10 mt-auto mb-2 hover:bg-opacity-60 mx-auto"
-          onClick={() => console.log()}
-        >
-          Okay
-        </button>
+  const newQuestion = () => {
+    props.newQuestion();
+  };
+
+  const HandleSubmit = (text: string) => {
+    if (!props.checkAnswer(text)) {
+      setCorrectStreak(0);
+      setShowingResults(true);
+      setUserInput(text);
+    } else {
+      setCorrectStreak(correctStreak + 1);
+      props.newQuestion();
+    }
+  };
+
+  return (
+    <div className="w-1/2 p-8 mx-auto border-2 rounded-md h-96">
+      <GoThreeBars
+        onClick={() => setShowingSettings(!showingSettings)}
+        className="text-3xl m-[-1rem]"
+      />
+
+      {showingSettings ? (
+        <PracticeSettings></PracticeSettings>
+      ) : (
+        <>
+          {showingResults ? (
+            <Results
+              userInput={userInput}
+              correctAnswer={props.correctAnswer}
+              setShowingResults={setShowingResults}
+              newQuestion={newQuestion}
+            />
+          ) : (
+            <Question HandleSubmit={HandleSubmit}>{props.children}</Question>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
+
+interface ResultsProps {
+  userInput: string;
+  correctAnswer: string;
+  setShowingResults: Function;
+  newQuestion: Function;
+}
+const Results: React.FC<ResultsProps> = (props) => {
+  return (
+    <div className="flex flex-col justify-end h-full">
+      <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
+        Your Answer
+      </h1>
+      <h1 className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+        {props.userInput}
+      </h1>
+
+      <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
+        Correct Answer
+      </h1>
+      <h1 className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+        {addScripts(props.correctAnswer)}
+      </h1>
+
+      <button
+        onClick={() => {
+          props.setShowingResults(false);
+          props.newQuestion();
+        }}
+        className="mx-auto mt-3 button-standard"
+      >
+        Okay
+      </button>
+    </div>
+  );
+};
+
+interface QuestionProps {
+  HandleSubmit: Function;
+}
+
+const Question: React.FC<QuestionProps> = (props) => {
+  return (
+    <div className="flex flex-col justify-end h-full">
+      {props.children}
+
+      <div className="mt-10 mb-10">
+        <TextInput
+          response={(text: string) => props.HandleSubmit(text)}
+        ></TextInput>
       </div>
     </div>
   );

@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .title {
+    @apply text-5xl text-light-text dark:text-dark-text;
+  }
+  .bg-standard {
+    @apply bg-light-subtext bg-opacity-20 dark:bg-dark-30;
+  }
+  .button-standard {
+    @apply text-lg rounded-md select-none bg-[#355070]  text-white  hover:bg-[#6d597a] transition-all delay-75 duration-700 flex-shrink-0 py-1 px-2;
+  }
+}
 body {
   height: 100%;
   margin: 0;
@@ -9,6 +20,7 @@ body {
   background-attachment: fixed;
   overflow: hidden;
 }
+
 ::-webkit-scrollbar {
   display: none;
 }

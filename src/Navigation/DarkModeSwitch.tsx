@@ -13,11 +13,11 @@ export const DarkModeSwitch: FC = () => {
         setDarkMode(!darkMode);
       }}
     >
-      <div className="flex relative items-center justify-center dark:text-60 text-30 h-12 w-12 mt-2 mb-2 mx-auto">
+      <div className="relative flex items-center justify-center w-20 h-12">
         {darkMode ? (
-          <BsFillSunFill className="w-6 h-6" />
+          <BsFillSunFill className="m-auto" />
         ) : (
-          <BsFillMoonFill className="w-5 h-5" />
+          <BsFillMoonFill className="m-auto" />
         )}
       </div>
     </div>

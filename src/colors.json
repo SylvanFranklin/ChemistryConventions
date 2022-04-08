@@ -1,8 +1,12 @@
 {
-  "ten": "#380c09",
-  "thirty": "#F1F1F1",
-  "sixty": "#3D3E42",
-  "darkten": "#380c09",
-  "darkthirty": "#383838",
-  "darksixty": "#141414"
+  "dark-30": "#011627",
+  "dark-60": "#181818",
+  "dark-10": "#708D81",
+  "dark-text": "#E3E3E3",
+  "dark-subtext": "#EEEEEE",
+  "light-30": "#011627",
+  "light-60": "#FDFFFC",
+  "light-10": "#708D81",
+  "light-text": "#011627",
+  "light-subtext": "#ABABAB"
 }

@@ -6,12 +6,12 @@ import {
   ide,
   gcd,
   randomElement,
+  CheckAnswer,
 } from "../General/helperFunctions";
 import metals from "../../../Elemental Json/metals.json";
 import nonmetals from "../../../Elemental Json/nonmetals.json";
 import DefaultLayout from "../../../Page Layouts/Default";
-import { TextInput } from "../General/TextInput";
-import { Results } from "../General/Results";
+import { PracticeUI } from "../General/Results";
 
 export const IonicNaming: React.FC = () => {
   interface IonicCompound {
@@ -19,7 +19,7 @@ export const IonicNaming: React.FC = () => {
     nonmetal: ElementProps;
   }
 
-  const IonicName = (ions: IonicCompound) => {
+  const Name = (ions: IonicCompound) => {
     let metalcharge: string = " ";
 
     if (Math.abs(charge(ions.metal)) !== 1) {
@@ -29,7 +29,7 @@ export const IonicNaming: React.FC = () => {
     return `${ions.metal.name} ${metalcharge} ${ide(ions.nonmetal.name)}`;
   };
 
-  const IonicFormula = (ions: IonicCompound, returnJSX: boolean) => {
+  const Formula = (ions: IonicCompound) => {
     let metalCharge: number = Math.abs(charge(ions.nonmetal));
     let nonmetalCharge: number = Math.abs(charge(ions.metal));
 
@@ -39,62 +39,28 @@ export const IonicNaming: React.FC = () => {
     const subMetalCharge = metalCharge !== 1 ? metalCharge : "";
     const subNonmetalCharge = nonmetalCharge !== 1 ? nonmetalCharge : "";
 
-    return `${ions.metal.symbol}
-      ${subMetalCharge}
-      ${ions.nonmetal.symbol}
-      ${subNonmetalCharge}`;
+    return `${ions.metal.symbol}_${subMetalCharge}${ions.nonmetal.symbol}_${subNonmetalCharge}`;
   };
 
-  const IonicFormulaJSX: React.FC = () => {
-    const ions = CurrentIons;
-    let metalCharge: number = Math.abs(charge(ions.nonmetal));
-    let nonmetalCharge: number = Math.abs(charge(ions.metal));
-
-    metalCharge /= gcd(metalCharge, nonmetalCharge);
-    nonmetalCharge /= gcd(metalCharge, nonmetalCharge);
-
-    const subMetalCharge = metalCharge !== 1 ? metalCharge : "";
-    const subNonmetalCharge = nonmetalCharge !== 1 ? nonmetalCharge : "";
-
-    return (
-      <h1 className="text-center text-60">
-        {ions.metal.symbol}
-        <sub>{subMetalCharge}</sub>
-        {ions.nonmetal.symbol}
-        <sub>{subNonmetalCharge}</sub>
-      </h1>
-    );
-  };
-
-  const checkAnswer = (input: string, answer: string) => {
-    input = input.toLowerCase().replace(/\s/g, "");
-    answer = answer.toLowerCase().replace(/\s/g, "");
-
-    if (input === answer) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const [CurrentIons, setCurrentIons] = useState({
+  const [Ions, setIons] = useState({
     metal: randomElement(metals),
     nonmetal: randomElement(nonmetals),
   });
 
-  const [correct, setCorrect] = useState(null);
-
-  const handleSubmit = (input: string) => {
-    if (checkAnswer(input, IonicFormula(CurrentIons, false))) {
-      setCorrect(false);
-    }
-
-    return;
-  };
-
   return (
-    <DefaultLayout title={IonicName(CurrentIons)}>
-      <TextInput response={handleSubmit}></TextInput>
+    <DefaultLayout>
+      <PracticeUI
+        correctAnswer={Formula(Ions)}
+        checkAnswer={(text: string) => CheckAnswer(text, Formula(Ions))}
+        newQuestion={() =>
+          setIons({
+            metal: randomElement(metals),
+            nonmetal: randomElement(nonmetals),
+          })
+        }
+      >
+        <h1 className="text-center text-3xl mb-16">{Name(Ions)}</h1>
+      </PracticeUI>
     </DefaultLayout>
   );
 };

@@ -1,22 +1,42 @@
 import React, { FunctionComponent } from "react";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { BigElement } from "../../Element";
-import { randomElement } from "../General/helperFunctions";
-import { TextInput } from "../General/TextInput";
-import elementJSON from "../../../Elemental Json/table.json";
+import { CheckAnswer, randomElement } from "../General/helperFunctions";
+import elementJSON from "../../../Elemental Json/goodElements.json";
+import { useState } from "react";
+import { PracticeUI } from "../General/Results";
 
-const ShellConfiguration: FunctionComponent = (props) => {
+interface ShellConfigurationProps {
+  semantic: boolean;
+}
 
-
-
-  const handleSubmit = (text: string) => {
-    console.log(text);
-  };
+const ShellConfiguration: FunctionComponent<ShellConfigurationProps> = (
+  props
+) => {
+  const [currentElement, setCurrentElement] = useState({
+    ...randomElement(elementJSON),
+  });
 
   return (
-    <DefaultLayout title={"Shell Configuration"}>
-      <BigElement {...randomElement(elementJSON)} />
-      <TextInput response={handleSubmit} />
+    <DefaultLayout>
+      <PracticeUI
+        correctAnswer={
+          props.semantic
+            ? currentElement.electron_configuration_semantic
+            : currentElement.electron_configuration
+        }
+        checkAnswer={(text: string) =>
+          CheckAnswer(
+            text,
+            props.semantic
+              ? currentElement.electron_configuration_semantic
+              : currentElement.electron_configuration
+          )
+        }
+        newQuestion={() => setCurrentElement(randomElement(elementJSON))}
+      >
+        <BigElement {...currentElement} />
+      </PracticeUI>
     </DefaultLayout>
   );
 };
