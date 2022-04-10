@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 export interface ElementProps {
+  setActive?: Function;
   size?: number;
   name?: string;
   appearance?: string;
@@ -30,28 +31,19 @@ export interface ElementProps {
   cpk_hex?: string;
 }
 
-export const BigElement: FC<ElementProps> = (props) => {
-  return (
-    <div className={`select-none w-[135px] h-[135px] mx-auto`}>
-      <div
-        className={`shadow-lg text-center w-[130px] h-[130px] bg-[#${props.cpk_hex}] rounded-lg hover:brightness-125 hover:h-[128px] hover:w-[128px] group`}
-      >
-        <h3 className="mr-24 pt-1">{props.number}</h3>
-
-        <h1 className={`text-4xl font-bold m-0`}>
-          {props.cpk_hex ? props.symbol : ""}
-        </h1>
-
-        <p className="hidden group-hover:block transition-all">{props.name}</p>
-      </div>
-    </div>
-  );
-};
-
 const Element: FC<ElementProps> = (props) => {
+  const { setActive, ...rest } = { ...props };
+
+
+
   return (
     <div
       className={`select-none w-[45px] h-[45px] flex flex-col justify-center border border-opacity-10 border-light-subtext`}
+      onClick={() => {
+        if (props.cpk_hex) {
+          props.setActive({ ...rest });
+        }
+      }}
     >
       <div
         className={`mx-auto text-center w-[40px] h-[40px] bg-[#${props.cpk_hex}] rounded-sm hover:brightness-125 hover:h-[38px] hover:w-[38

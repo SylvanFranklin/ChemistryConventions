@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PeriodicTable from "../Components/PeriodicTable";
+import PeriodicTable from "../Components/Table/PeriodicTable";
 import { CovalentNaming } from "../Components/Practice/Specific Practice/CovalentNaming";
 import { HydroCarbonNaming } from "../Components/Practice/Specific Practice/HydroCarbons";
 import { IonicNaming } from "../Components/Practice/Specific Practice/ionicNaming";

@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { ElementProps } from "../../Element";
-import {
-  charge,
-  romanize,
-  ide,
-  gcd,
-  randomElement,
-  CheckAnswer,
-} from "../General/helperFunctions";
 import metals from "../../../Elemental Json/metals.json";
 import nonmetals from "../../../Elemental Json/nonmetals.json";
 import DefaultLayout from "../../../Page Layouts/Default";
+import { ElementProps } from "../../Table/Element";
+import {
+  charge,
+  CheckAnswer,
+  gcd,
+  ide,
+  randomElement,
+  romanize,
+} from "../General/helperFunctions";
 import { PracticeUI } from "../General/Results";
 
 export const IonicNaming: React.FC = () => {
@@ -58,8 +58,9 @@ export const IonicNaming: React.FC = () => {
             nonmetal: randomElement(nonmetals),
           })
         }
+        settings={undefined}
       >
-        <h1 className="text-center text-3xl mb-16">{Name(Ions)}</h1>
+        <h1 className="mb-16 text-3xl text-center">{Name(Ions)}</h1>
       </PracticeUI>
     </DefaultLayout>
   );

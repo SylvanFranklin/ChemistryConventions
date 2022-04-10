@@ -1,5 +1,5 @@
 import React from "react";
-import { ElementProps } from "../../Element";
+import { ElementProps } from "../../Table/Element";
 
 export function randInt(min: number, max: number) {
   min = Math.ceil(min);

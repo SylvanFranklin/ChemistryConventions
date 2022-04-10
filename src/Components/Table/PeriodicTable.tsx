@@ -1,9 +1,12 @@
-import elementJSON from "../Elemental Json/table.json";
+import elementJSON from "../../Elemental Json/table.json";
 import { ElementProps } from "./Element";
 import Element from "./Element";
-import DefaultLayout from "../Page Layouts/Default";
+import DefaultLayout from "../../Page Layouts/Default";
+import React, { useState } from "react";
+import { ElementInspector } from "./ElementInfo";
+import { randomElement } from "../Practice/General/helperFunctions";
 
-const newTable = () => {
+const newTable = (setCurrentElement: Function) => {
   const rws: ElementProps[][] = [
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -33,7 +36,13 @@ const newTable = () => {
     return (
       <div key={Math.random()}>
         {clm.map((element) => {
-          return <Element key={Math.random()} {...element} />;
+          return (
+            <Element
+              key={Math.random()}
+              setActive={setCurrentElement}
+              {...element}
+            />
+          );
         })}
       </div>
     );
@@ -43,11 +52,15 @@ const newTable = () => {
 };
 
 const PeriodicTable = () => {
-  const lms = newTable();
+  const [currentElement, setCurrentElement] = useState(null);
+  const lms = newTable(setCurrentElement);
+
   return (
     <DefaultLayout title="Table">
-      <div className="flex flex-col bg-30 rounded-none w-min mx-auto bg-standard">
-        <div className="flex p-3 ">{lms}</div>
+      <div className="flex flex-row bg-30 w-min mx-auto">
+        <div className="flex mx-4 p-4 bg-standard">{lms}</div>
+
+        <ElementInspector currentElement={currentElement} />
       </div>
     </DefaultLayout>
   );

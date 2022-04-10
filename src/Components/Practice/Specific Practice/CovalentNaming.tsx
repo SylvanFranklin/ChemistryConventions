@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ElementProps } from "../../Element";
+import { ElementProps } from "../../Table/Element";
 import {
   charge,
   ide,

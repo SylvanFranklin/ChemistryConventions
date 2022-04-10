@@ -1,18 +1,17 @@
-import { TextInput } from "./TextInput";
-
+import React, { ReactElement, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
-import React, { useState } from "react";
 import { addScripts } from "./helperFunctions";
 import { PracticeSettings } from "./settings";
+import { TextInput } from "./TextInput";
 
 interface PracticeUIProps {
   correctAnswer: string;
   checkAnswer: Function;
   newQuestion: Function;
+  settings: ReactElement;
 }
-
 export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
-  const [correctStreak, setCorrectStreak] = useState(0);
+  // const [correctStreak, setCorrectStreak] = useState(0);
   const [showingResults, setShowingResults] = useState(false);
   const [showingSettings, setShowingSettings] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -23,11 +22,11 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
 
   const HandleSubmit = (text: string) => {
     if (!props.checkAnswer(text)) {
-      setCorrectStreak(0);
+      // setCorrectStreak(0);
       setShowingResults(true);
       setUserInput(text);
     } else {
-      setCorrectStreak(correctStreak + 1);
+      // setCorrectStreak(correctStreak + 1);
       props.newQuestion();
     }
   };
@@ -40,7 +39,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
       />
 
       {showingSettings ? (
-        <PracticeSettings></PracticeSettings>
+        <PracticeSettings>{props.settings}</PracticeSettings>
       ) : (
         <>
           {showingResults ? (

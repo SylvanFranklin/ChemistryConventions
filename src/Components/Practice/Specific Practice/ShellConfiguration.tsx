@@ -1,21 +1,21 @@
-import React, { FunctionComponent } from "react";
-import DefaultLayout from "../../../Page Layouts/Default";
-import { BigElement } from "../../Element";
-import { CheckAnswer, randomElement } from "../General/helperFunctions";
+import React, { FunctionComponent, useState } from "react";
 import elementJSON from "../../../Elemental Json/goodElements.json";
-import { useState } from "react";
+import DefaultLayout from "../../../Page Layouts/Default";
+import { BigElement } from "../../Table/BigElement";
+import { CheckAnswer, randomElement } from "../General/helperFunctions";
 import { PracticeUI } from "../General/Results";
+import { Setting } from "../General/settings";
 
-interface ShellConfigurationProps {
+interface ConfigurationProps {
   semantic: boolean;
 }
 
-const ShellConfiguration: FunctionComponent<ShellConfigurationProps> = (
-  props
-) => {
+const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
   const [currentElement, setCurrentElement] = useState({
     ...randomElement(elementJSON),
   });
+
+  const [AnswerWithFormula, setAnswerWithFormula] = useState(true);
 
   return (
     <DefaultLayout>
@@ -34,8 +34,17 @@ const ShellConfiguration: FunctionComponent<ShellConfigurationProps> = (
           )
         }
         newQuestion={() => setCurrentElement(randomElement(elementJSON))}
+        settings={
+          <Setting
+            name={"Answer with:"}
+            value={AnswerWithFormula ? "Formula" : "Element"}
+            setter={() => setAnswerWithFormula(!AnswerWithFormula)}
+          />
+        }
       >
-        <BigElement {...currentElement} />
+        <div className="mx-auto">
+          <BigElement {...currentElement} />
+        </div>
       </PracticeUI>
     </DefaultLayout>
   );

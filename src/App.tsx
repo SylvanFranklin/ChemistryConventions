@@ -1,6 +1,6 @@
 import { createContext, FunctionComponent, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PeriodicTable from "./Components/PeriodicTable";
+import PeriodicTable from "./Components/Table/PeriodicTable";
 import ShellConfiguration from "./Components/Practice/Specific Practice/ShellConfiguration";
 import { AppRoutes } from "./Navigation/Routes";
 import DefaultLayout from "./Page Layouts/Default";
