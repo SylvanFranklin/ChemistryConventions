@@ -2,28 +2,34 @@ import { useState } from "react";
 import { CheckAnswer, randInt } from "../General/helperFunctions";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { PracticeUI } from "../General/Results";
+import { Naming } from "../General/Naming";
 
 export const HydroCarbonNaming: React.FC = () => {
-  const Formula = (carbons: number, type: number) => {
+  interface HydroCarbonNaming {
+    numCarbon: number;
+    numHydrogen: number;
+  }
+
+  const Formula = (ions: HydroCarbonNaming) => {
     let hydrogens: number;
 
     //     ane
-    if (type === 1) {
-      hydrogens = carbons * 2 + 2;
+    if (ions.numHydrogen === 1) {
+      hydrogens = ions.numCarbon * 2 + 2;
 
       //     ene
-    } else if (type === 2) {
-      hydrogens = carbons * 2;
+    } else if (ions.numHydrogen === 2) {
+      hydrogens = ions.numCarbon * 2;
 
       //     yne
     } else {
-      hydrogens = carbons * 2 - 2;
+      hydrogens = ions.numCarbon * 2 - 2;
     }
 
-    return `C_${carbons}H_${hydrogens}`;
+    return `C_${ions.numCarbon}H_${hydrogens}`;
   };
 
-  const Name = (carbons: number, type: number) => {
+  const Name = (ions: HydroCarbonNaming) => {
     const prefixes = [
       "meth",
       "eth",
@@ -39,34 +45,25 @@ export const HydroCarbonNaming: React.FC = () => {
 
     let ending: string;
 
-    if (type === 1) {
+    if (ions.numHydrogen === 1) {
       ending = "ane";
-    } else if (type === 2) {
+    } else if (ions.numHydrogen === 2) {
       ending = "ene";
     } else {
       ending = "yne";
     }
 
-    return prefixes[carbons - 1] + ending;
+    return prefixes[ions.numCarbon - 1] + ending;
   };
 
-  const [Carbons, setCarbons] = useState(randInt(1, 10));
-  const [Type, setType] = useState(randInt(1, 3));
+  const NewHydroCarbon = () => {
+    return {
+      numCarbon: randInt(1, 10),
+      numHydrogen: randInt(1, 3),
+    };
+  };
 
   return (
-    <DefaultLayout>
-      <PracticeUI
-        correctAnswer={Formula(Carbons, Type)}
-        checkAnswer={(text: string) =>
-          CheckAnswer(text, Formula(Carbons, Type))
-        }
-        newQuestion={() => {
-          setCarbons(randInt(1, 10));
-          setType(randInt(1, 4));
-        }}
-      >
-        <h1 className="text-center text-3xl mb-16">{Name(Carbons, Type)}</h1>
-      </PracticeUI>
-    </DefaultLayout>
+    <Naming Formula={Formula} Name={Name} newIons={() => NewHydroCarbon()} />
   );
 };

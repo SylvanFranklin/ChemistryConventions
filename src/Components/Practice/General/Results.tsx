@@ -70,16 +70,16 @@ const Results: React.FC<ResultsProps> = (props) => {
       <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
         Your Answer
       </h1>
-      <h1 className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+      <div className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
         {props.userInput}
-      </h1>
+      </div>
 
       <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
         Correct Answer
       </h1>
-      <h1 className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+      <div className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
         {addScripts(props.correctAnswer)}
-      </h1>
+      </div>
 
       <button
         onClick={() => {

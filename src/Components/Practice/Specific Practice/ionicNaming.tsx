@@ -1,17 +1,15 @@
-import { useState } from "react";
 import metals from "../../../Elemental Json/metals.json";
 import nonmetals from "../../../Elemental Json/nonmetals.json";
-import DefaultLayout from "../../../Page Layouts/Default";
 import { ElementProps } from "../../Table/Element";
 import {
   charge,
-  CheckAnswer,
   gcd,
   ide,
   randomElement,
   romanize,
 } from "../General/helperFunctions";
-import { PracticeUI } from "../General/Results";
+import { Naming } from "../General/Naming";
+
 
 export const IonicNaming: React.FC = () => {
   interface IonicCompound {
@@ -42,26 +40,12 @@ export const IonicNaming: React.FC = () => {
     return `${ions.metal.symbol}_${subMetalCharge}${ions.nonmetal.symbol}_${subNonmetalCharge}`;
   };
 
-  const [Ions, setIons] = useState({
-    metal: randomElement(metals),
-    nonmetal: randomElement(nonmetals),
-  });
+  const NewIons = () => {
+    return {
+      metal: randomElement(metals),
+      nonmetal: randomElement(nonmetals),
+    };
+  };
 
-  return (
-    <DefaultLayout>
-      <PracticeUI
-        correctAnswer={Formula(Ions)}
-        checkAnswer={(text: string) => CheckAnswer(text, Formula(Ions))}
-        newQuestion={() =>
-          setIons({
-            metal: randomElement(metals),
-            nonmetal: randomElement(nonmetals),
-          })
-        }
-        settings={undefined}
-      >
-        <h1 className="mb-16 text-3xl text-center">{Name(Ions)}</h1>
-      </PracticeUI>
-    </DefaultLayout>
-  );
+  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} />;
 };
