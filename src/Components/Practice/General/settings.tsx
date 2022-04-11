@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface SettingProps {
   name: string;
@@ -9,9 +9,11 @@ interface SettingProps {
 
 export const Setting: React.FC<SettingProps> = (props) => {
   return (
-    <div className=''>
+    <div className="">
       <h1>{props.name}</h1>
-      <button className="button-standard" onClick={() => props.setter()}>{props.value}</button>
+      <button className="button-standard" onClick={() => props.setter()}>
+        {props.value}
+      </button>
     </div>
   );
 };

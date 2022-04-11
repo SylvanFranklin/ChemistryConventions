@@ -10,7 +10,6 @@ import {
 } from "../General/helperFunctions";
 import { Naming } from "../General/Naming";
 
-
 export const IonicNaming: React.FC = () => {
   interface IonicCompound {
     metal: ElementProps;

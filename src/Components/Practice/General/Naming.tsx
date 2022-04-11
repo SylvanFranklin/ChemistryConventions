@@ -18,7 +18,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
         correctAnswer={props.Formula(Ions)}
         checkAnswer={(text: string) => CheckAnswer(text, props.Formula(Ions))}
         newQuestion={() => setIons(props.newIons)}
-        settings={undefined}
+        settings={null}
       >
         <h1 className="mb-16 text-3xl text-center">{props.Name(Ions)}</h1>
       </PracticeUI>

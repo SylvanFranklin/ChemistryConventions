@@ -15,8 +15,6 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
     ...randomElement(elementJSON),
   });
 
-  const [AnswerWithFormula, setAnswerWithFormula] = useState(true);
-
   return (
     <DefaultLayout>
       <PracticeUI
@@ -34,13 +32,7 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
           )
         }
         newQuestion={() => setCurrentElement(randomElement(elementJSON))}
-        settings={
-          <Setting
-            name={"Answer with:"}
-            value={AnswerWithFormula ? "Formula" : "Element"}
-            setter={() => setAnswerWithFormula(!AnswerWithFormula)}
-          />
-        }
+        settings={null}
       >
         <div className="mx-auto">
           <BigElement {...currentElement} />
