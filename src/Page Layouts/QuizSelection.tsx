@@ -53,7 +53,7 @@ interface QuizFolderProps {
 const QuizFolder: React.FC<QuizFolderProps> = (props) => {
   const [folderOpen, setFolderOpen] = useState(false);
   return (
-    <div className="border-l-2 border-black">
+    <div className="">
       <div
         onClick={() => setFolderOpen(!folderOpen)}
         className="flex flex-row items-center m-2 mx-auto transition-all duration-100 ease-in-out rounded-r-md select-none bg-standard hover:bg-opacity-50"

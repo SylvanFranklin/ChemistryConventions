@@ -103,6 +103,7 @@ const Question: React.FC<QuestionProps> = (props) => {
     <div className="flex flex-col justify-end h-full">
       {props.children}
 
+
       <div className="mt-10 mb-10">
         <TextInput
           response={(text: string) => props.HandleSubmit(text)}

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DefaultLayout from "../../../Page Layouts/Default";
-import { CheckAnswer } from "../General/helperFunctions";
+import { addScripts, CheckAnswer } from "../General/helperFunctions";
 import { PracticeUI } from "../General/Results";
+import { PracticeSettings, Setting } from "./settings";
 
 interface NamingProps {
   Formula: Function;
@@ -12,15 +13,32 @@ interface NamingProps {
 export const Naming: React.FC<NamingProps> = (props) => {
   const [Ions, setIons] = useState(props.newIons());
 
+  const [quizFormula, setQuizFormula] = useState(false);
+
   return (
     <DefaultLayout>
       <PracticeUI
-        correctAnswer={props.Formula(Ions)}
-        checkAnswer={(text: string) => CheckAnswer(text, props.Formula(Ions))}
+        correctAnswer={quizFormula ? props.Formula(Ions) : props.Name(Ions)}
+        checkAnswer={(text: string) =>
+          CheckAnswer(
+            text,
+            quizFormula ? props.Formula(Ions) : props.Name(Ions)
+          )
+        }
         newQuestion={() => setIons(props.newIons)}
-        settings={null}
+        settings={
+          <PracticeSettings>
+            <Setting
+              name={"question type"}
+              value={"fill"}
+              setter={() => setQuizFormula(!quizFormula)}
+            />
+          </PracticeSettings>
+        }
       >
-        <h1 className="mb-16 text-3xl text-center">{props.Name(Ions)}</h1>
+        <h1 className="mb-16 text-3xl text-center">
+          {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}
+        </h1>
       </PracticeUI>
     </DefaultLayout>
   );
