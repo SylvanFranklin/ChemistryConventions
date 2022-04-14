@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DefaultLayout from "../../../Page Layouts/Default";
-import { addScripts, CheckAnswer } from "../General/helperFunctions";
-import { PracticeUI } from "../General/Results";
+import { addScripts, CheckAnswer } from "./helperFunctions";
+import { PracticeUI } from "./Results";
 import { PracticeSettings, Setting } from "./settings";
 
 interface NamingProps {
