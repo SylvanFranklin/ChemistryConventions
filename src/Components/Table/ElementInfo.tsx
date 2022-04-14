@@ -1,7 +1,7 @@
 import React from "react";
-import { ElementProps } from "./Element";
-import { BigElement } from "./BigElement";
 import { charge } from "../Practice/General/helperFunctions";
+import { BigElement } from "./BigElement";
+import { ElementProps } from "./Element";
 
 interface ElementInspectorProps {
   currentElement?: ElementProps;
@@ -9,16 +9,16 @@ interface ElementInspectorProps {
 
 export const ElementInspector: React.FC<ElementInspectorProps> = (props) => {
   return (
-    <div className="flex bg-standard w-60">
+    <div className="flex bg-standard w-60 ">
       <div className="mx-auto mt-4">
         <BigElement {...props.currentElement}></BigElement>
-        <div className='mt-4 mx-auto'>
+        <div className="mt-4 mx-auto text-light-text dark:text-dark-text">
           <InfoPair
             title={"Oxidation States"}
             value={
               props.currentElement
                 ? String(charge({ ...props.currentElement }))
-                : ""
+                : " "
             }
           />
           <InfoPair
@@ -32,9 +32,7 @@ export const ElementInspector: React.FC<ElementInspectorProps> = (props) => {
           <InfoPair
             title={"Category"}
             value={
-              props.currentElement
-                ? String(props.currentElement.category)
-                : ""
+              props.currentElement ? String(props.currentElement.category) : ""
             }
           />
         </div>
@@ -52,7 +50,9 @@ const InfoPair: React.FC<InfoPairProps> = (props) => {
   return (
     <>
       <h1 className="text-center font-bold mt-1 text-lg">{props.title}</h1>
-      <p className=" bg-standard p-1 overflow-x-auto h-8 rounded-sm">{props.value}</p>
+      <p className=" bg-standard p-1 overflow-x-auto h-8 rounded-sm">
+        {props.value}
+      </p>
     </>
   );
 };

@@ -4,7 +4,7 @@ import NavItem from "./NavItem";
 
 const NavBar: FC = () => {
   return (
-    <div className="flex flex-row h-16 justify-end border-b px-4 mx-auto mb-10">
+    <div className="flex flex-row h-16 justify-end border-b px-4 mx-auto mb-10 text-light-text dark:text-dark-text">
       {/* <NavItem>
         <Search></Search>
       </NavItem> */}

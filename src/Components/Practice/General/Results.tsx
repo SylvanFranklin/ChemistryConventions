@@ -32,7 +32,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
   };
 
   return (
-    <div className="w-1/2 p-8 mx-auto border-2 rounded-md h-96">
+    <div className="w-1/2 p-8 mx-auto border-2 rounded-md h-96 text-light-text dark:text-dark-text">
       <GoThreeBars
         onClick={() => setShowingSettings(!showingSettings)}
         className="text-3xl m-[-1rem]"
