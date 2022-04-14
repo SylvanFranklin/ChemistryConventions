@@ -1,12 +1,17 @@
 {
-  "dark-30": "#011627",
-  "dark-60": "#181818",
-  "dark-10": "#708D81",
-  "dark-text": "#E3E3E3",
-  "dark-subtext": "#EEEEEE",
-  "light-30": "#011627",
+  "dark-60": "#242933",
   "light-60": "#FDFFFC",
-  "light-10": "#708D81",
-  "light-text": "#011627",
-  "light-subtext": "#ABABAB"
+
+  "dark-gray": "#34373d",
+  "light-gray": "#f1f1f1",
+
+  "light-text": "#1b1f27",
+  "dark-text": "#d8dee9",
+
+
+  "--y-in-mn-blue": "#355070ff",
+  "--chinese-violet": "#6d597aff",
+  "--cinnamon-satin": "#b56576ff",
+  "--candy-pink": "#e56b6fff",
+  "--tumbleweed": "#eaac8bff"
 }

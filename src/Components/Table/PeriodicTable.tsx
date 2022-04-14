@@ -1,10 +1,8 @@
-import elementJSON from "../../Elemental Json/table.json";
-import { ElementProps } from "./Element";
-import Element from "./Element";
-import DefaultLayout from "../../Page Layouts/Default";
 import React, { useState } from "react";
+import elementJSON from "../../Elemental Json/table.json";
+import DefaultLayout from "../../Page Layouts/Default";
+import Element, { ElementProps } from "./Element";
 import { ElementInspector } from "./ElementInfo";
-import { randomElement } from "../Practice/General/helperFunctions";
 
 const newTable = (setCurrentElement: Function) => {
   const rws: ElementProps[][] = [
@@ -57,7 +55,7 @@ const PeriodicTable = () => {
 
   return (
     <DefaultLayout title="Table">
-      <div className="flex flex-row bg-30 w-min mx-auto">
+      <div className="flex flex-row w-min mx-auto">
         <div className="flex mx-4 p-4 bg-standard">{lms}</div>
 
         <ElementInspector currentElement={currentElement} />

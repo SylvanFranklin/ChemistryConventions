@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 export interface ElementProps {
   setActive?: Function;
@@ -34,11 +34,9 @@ export interface ElementProps {
 const Element: FC<ElementProps> = (props) => {
   const { setActive, ...rest } = { ...props };
 
-
-
   return (
     <div
-      className={`select-none w-[45px] h-[45px] flex flex-col justify-center border border-opacity-10 border-light-subtext`}
+      className={`select-none w-[45px] h-[45px] flex flex-col justify-center dark-`}
       onClick={() => {
         if (props.cpk_hex) {
           props.setActive({ ...rest });

@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
-import { JsxElement } from "typescript";
 
 interface NavItemProps {
   location?: string;
@@ -17,14 +16,14 @@ const NavItem: FunctionComponent<NavItemProps> = (props) => {
 
   return (
     <div
-      className="flex w-20 h-12 mx-1 transition-all duration-200 my-auto hover:text-light-10"
+      className="flex w-20 h-12 mx-1 my-auto transition-all duration-200"
       onClick={() => {
         if (props.location) {
           navigate(props.location);
         }
       }}
     >
-      <div className="mx-auto my-auto text-lg text-center select-none dark:text-60 text-30 hover:text-10">
+      <div className="mx-auto my-auto text-lg text-center select-none">
         {props.children}
       </div>
     </div>

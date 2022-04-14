@@ -120,16 +120,15 @@ module.exports = {
     extend: {
       display: ["group hover"],
       colors: {
-        "dark-30": colors["dark-30"],
+        // "dark-30": colors["dark-30"],
+        // "dark-60": colors["dark-60"],
+        // "light-60": colors["light-60"],
+
         "dark-60": colors["dark-60"],
-        "dark-10": colors["dark-10"],
+        "dark-gray": colors["dark-gray"],
+        "light-gray": colors["light-gray"],
         "dark-text": colors["dark-text"],
-        "dark-subtext": colors["dark-subtext"],
-        "light-30": colors["light-30"],
-        "light-60": colors["light-60"],
-        "light-10": colors["light-10"],
         "light-text": colors["light-text"],
-        "light-subtext": colors["light-subtext"],
       },
     },
   },

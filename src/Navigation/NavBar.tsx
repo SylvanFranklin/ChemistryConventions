@@ -1,9 +1,6 @@
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { FC } from "react";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 import NavItem from "./NavItem";
-import { Search } from "./SearchSwitch";
-import React from "react";
 
 const NavBar: FC = () => {
   return (
@@ -19,9 +16,9 @@ const NavBar: FC = () => {
       <NavItem location={"/practice"}>
         <h1>Practice</h1>
       </NavItem>
-      {/* <NavItem>
+      <NavItem>
         <DarkModeSwitch />
-      </NavItem> */}
+      </NavItem>
     </div>
   );
 };
