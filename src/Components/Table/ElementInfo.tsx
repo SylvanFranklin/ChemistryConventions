@@ -9,10 +9,10 @@ interface ElementInspectorProps {
 
 export const ElementInspector: React.FC<ElementInspectorProps> = (props) => {
   return (
-    <div className="flex bg-standard w-60 ">
+    <div className="bg-standard flex w-60 ">
       <div className="mx-auto mt-4">
         <BigElement {...props.currentElement}></BigElement>
-        <div className="mt-4 mx-auto text-light-text dark:text-dark-text">
+        <div className="mx-auto mt-4 text-light-text dark:text-dark-text">
           <InfoPair
             title={"Oxidation States"}
             value={
@@ -49,8 +49,8 @@ interface InfoPairProps {
 const InfoPair: React.FC<InfoPairProps> = (props) => {
   return (
     <>
-      <h1 className="text-center font-bold mt-1 text-lg">{props.title}</h1>
-      <p className=" bg-standard p-1 overflow-x-auto h-8 rounded-sm">
+      <h1 className="mt-1 text-center text-lg font-bold">{props.title}</h1>
+      <p className="bg-standard h-8 overflow-x-auto rounded-sm p-1 ">
         {props.value}
       </p>
     </>

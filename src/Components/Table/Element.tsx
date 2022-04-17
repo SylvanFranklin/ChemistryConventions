@@ -36,7 +36,7 @@ const Element: FC<ElementProps> = (props) => {
 
   return (
     <div
-      className={`select-none w-[45px] h-[45px] flex flex-col justify-center dark-`}
+      className={`flex h-[45px] w-[45px] select-none flex-col justify-center border dark:border-dark-gray dark:brightness-110`}
       onClick={() => {
         if (props.cpk_hex) {
           props.setActive({ ...rest });
@@ -44,8 +44,8 @@ const Element: FC<ElementProps> = (props) => {
       }}
     >
       <div
-        className={`mx-auto text-center w-[40px] h-[40px] bg-[#${props.cpk_hex}] rounded-sm hover:brightness-125 hover:h-[38px] hover:w-[38
-        }px]`}
+        className={`mx-auto h-[40px] w-[40px] text-center bg-[#${props.cpk_hex}] hover:w-[38 }px] rounded-sm hover:h-[38px]
+        hover:brightness-125`}
       >
         <h1 className={`text-lg font-bold`}>
           {props.cpk_hex ? props.symbol : ""}
