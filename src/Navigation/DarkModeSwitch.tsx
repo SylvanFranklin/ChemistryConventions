@@ -1,6 +1,5 @@
-import { FC, useContext, useState } from "react";
-import { BsFillMoonFill } from "react-icons/bs";
-import { BsFillSunFill } from "react-icons/bs";
+import React, { FC, useContext } from "react";
+import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { darkModeContext } from "../App";
 
 export const DarkModeSwitch: FC = () => {
@@ -8,16 +7,16 @@ export const DarkModeSwitch: FC = () => {
 
   return (
     <div
-      className="flex w-10 h-16 transition-all duration-500"
+      className="flex"
       onClick={() => {
         setDarkMode(!darkMode);
       }}
     >
-      <div className="relative flex items-center justify-center w-20 h-12">
+      <div className="relative flex items-center justify-center mx-3 text-2xl">
         {darkMode ? (
-          <BsFillSunFill className="m-auto" />
+          <BsFillSunFill className="mx-auto" />
         ) : (
-          <BsFillMoonFill className="m-auto" />
+          <BsFillMoonFill className="mx-auto" />
         )}
       </div>
     </div>

@@ -5,7 +5,7 @@ import { AppRoutes } from "./Navigation/Routes";
 export const darkModeContext = createContext(null);
 
 const App: FunctionComponent = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <darkModeContext.Provider value={{ darkMode, setDarkMode }}>
