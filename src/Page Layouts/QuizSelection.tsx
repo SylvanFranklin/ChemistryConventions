@@ -11,9 +11,9 @@ export const QuizzesLayout: FunctionComponent<QuizzesLayoutProps> = () => {
     <DefaultLayout title={"Practice"}>
       <div className="mx-auto w-2/5">
         <QuizFolder name={"Naming"}>
-          <Quiz name="Naming Ionic Compounds" path="naming/ionic" />
-          <Quiz name="Naming Covalent Compounds" path="naming/covalent" />
-          <Quiz name="Naming hydrocarbons" path="naming/hydrocarbons" />
+          <Quiz name="Ionic Compounds" path="naming/ionic" />
+          <Quiz name="Covalent Compounds" path="naming/covalent" />
+          <Quiz name="hydrocarbons" path="naming/hydrocarbons" />
         </QuizFolder>
 
         <Quiz name="shell configuration" path="shellconfiguration" />
