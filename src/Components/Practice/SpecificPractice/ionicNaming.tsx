@@ -1,12 +1,12 @@
-import metals from "../../../Elemental Json/metals.json";
-import nonmetals from "../../../Elemental Json/nonmetals.json";
-import polyAtomics from "../../../Elemental Json/polyatomicIons.json";
+import metals from "../../../ElementalJson/metals.json";
+import nonmetals from "../../../ElementalJson/nonmetals.json";
+import polyAtomics from "../../../ElementalJson/polyatomicIons.json";
 import { ElementProps } from "../../Table/Element";
-
 import {
   charge,
   gcd,
   ide,
+  randInt,
   randomElement,
   romanize,
 } from "../General/helperFunctions";
@@ -44,7 +44,10 @@ export const IonicNaming: React.FC = () => {
   const NewIons = () => {
     return {
       metal: randomElement(metals),
-      nonmetal: randomElement(nonmetals),
+      nonmetal:
+        randInt(0, 1) === 1
+          ? randomElement(nonmetals)
+          : randomElement(polyAtomics),
     };
   };
 

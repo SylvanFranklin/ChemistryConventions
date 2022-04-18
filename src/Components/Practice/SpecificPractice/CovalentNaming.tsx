@@ -1,5 +1,4 @@
-import { useState } from "react";
-import nonmetals from "../../../Elemental Json/nonmetals.json";
+import nonmetals from "../../../ElementalJson/nonmetals.json";
 import { ElementProps } from "../../Table/Element";
 import { charge, gcd, ide, randomElement } from "../General/helperFunctions";
 import { Naming } from "../General/Naming";
@@ -74,5 +73,12 @@ export const CovalentNaming: React.FC = () => {
       nonmetal2: randomElement(nonmetals),
     };
   };
-  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} QuizName={"Covalent Compounds"} />;
+  return (
+    <Naming
+      Formula={Formula}
+      Name={Name}
+      newIons={() => NewIons()}
+      QuizName={"Covalent Compounds"}
+    />
+  );
 };

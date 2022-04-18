@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import elementJSON from "../../Elemental Json/table.json";
+import elementJSON from "../../ElementalJson/table.json";
 import DefaultLayout from "../../Page Layouts/Default";
 import Element, { ElementProps } from "./Element";
 import { ElementInspector } from "./ElementInfo";

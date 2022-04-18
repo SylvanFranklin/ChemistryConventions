@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from "react";
-import elementJSON from "../../../Elemental Json/goodElements.json";
+import elementJSON from "../../../ElementalJson/goodElements.json";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { BigElement } from "../../Table/BigElement";
 import { CheckAnswer, randomElement } from "../General/helperFunctions";
 import { PracticeUI } from "../General/PracticeUI";
-import { Setting } from "../General/settings";
 
 interface ConfigurationProps {
   semantic: boolean;
