@@ -33,6 +33,11 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
         }
         newQuestion={() => setCurrentElement(randomElement(elementJSON))}
         settings={null}
+        quizName={
+          props.semantic
+            ? "Semantic Shell Configuration"
+            : "Shell Configuration"
+        }
       >
         <div className="mx-auto">
           <BigElement {...currentElement} />

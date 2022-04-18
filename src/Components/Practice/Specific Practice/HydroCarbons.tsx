@@ -64,6 +64,11 @@ export const HydroCarbonNaming: React.FC = () => {
   };
 
   return (
-    <Naming Formula={Formula} Name={Name} newIons={() => NewHydroCarbon()} />
+    <Naming
+      Formula={Formula}
+      Name={Name}
+      newIons={() => NewHydroCarbon()}
+      QuizName={"Hydro Carbons"}
+    />
   );
 };

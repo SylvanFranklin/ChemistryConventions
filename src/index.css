@@ -6,6 +6,11 @@
   .title {
     @apply text-5xl font-bold text-light-text dark:text-dark-text;
   }
+
+  .text-stadard {
+    @apply font-bold text-light-text dark:text-dark-text;
+  }
+
   .bg-standard {
     @apply bg-light-gray dark:bg-dark-gray dark:brightness-110;
   }

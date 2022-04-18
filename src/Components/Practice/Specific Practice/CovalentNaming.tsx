@@ -74,5 +74,5 @@ export const CovalentNaming: React.FC = () => {
       nonmetal2: randomElement(nonmetals),
     };
   };
-  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} />;
+  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} QuizName={"Covalent Compounds"} />;
 };

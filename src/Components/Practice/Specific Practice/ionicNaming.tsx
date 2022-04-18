@@ -46,5 +46,5 @@ export const IonicNaming: React.FC = () => {
     };
   };
 
-  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} />;
+  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} QuizName={'Ionic Compounds'} />;
 };

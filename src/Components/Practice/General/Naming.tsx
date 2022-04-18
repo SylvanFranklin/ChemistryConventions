@@ -8,6 +8,7 @@ interface NamingProps {
   Formula: Function;
   Name: Function;
   newIons: Function;
+  QuizName: string;
 }
 
 export const Naming: React.FC<NamingProps> = (props) => {
@@ -35,6 +36,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
             />
           </PracticeSettings>
         }
+        quizName={`Naming ${props.QuizName}`}
       >
         <div className="mb-16 text-center text-3xl">
           {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}

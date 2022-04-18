@@ -9,7 +9,7 @@ interface QuizzesLayoutProps {}
 export const QuizzesLayout: FunctionComponent<QuizzesLayoutProps> = () => {
   return (
     <DefaultLayout title={"Practice"}>
-      <div className="w-2/5 mx-auto">
+      <div className="mx-auto w-2/5">
         <QuizFolder name={"Naming"}>
           <Quiz name="Naming Ionic Compounds" path="naming/ionic" />
           <Quiz name="Naming Covalent Compounds" path="naming/covalent" />
@@ -37,9 +37,9 @@ const Quiz: FunctionComponent<QuizProps> = (props) => {
   return (
     <div
       onClick={() => navigator(props.path)}
-      className="flex flex-row items-center m-2 mx-auto transition-all duration-100 ease-in-out rounded-md select-none bg-standard hover:bg-opacity-50"
+      className="bg-standard m-2 mx-auto flex select-none flex-row items-center rounded-md transition-all duration-100 ease-in-out hover:bg-opacity-50"
     >
-      <h1 className="p-5 text-xl text-center text-light-text dark:text-dark-text bg-opacity-5">
+      <h1 className="bg-opacity-5 p-5 text-center text-xl text-light-text dark:text-dark-text">
         {props.name}
       </h1>
     </div>
@@ -56,9 +56,9 @@ const QuizFolder: React.FC<QuizFolderProps> = (props) => {
     <div className="">
       <div
         onClick={() => setFolderOpen(!folderOpen)}
-        className="flex flex-row items-center m-2 mx-auto transition-all duration-100 ease-in-out rounded-r-md select-none bg-standard hover:bg-opacity-50"
+        className="bg-standard m-2 mx-auto flex select-none flex-row items-center rounded-r-md transition-all duration-100 ease-in-out hover:bg-opacity-50"
       >
-        <div className="p-5 text-xl flex flex-row text-center text-light-text dark:text-dark-text bg-opacity-5">
+        <div className="flex flex-row bg-opacity-5 p-5 text-center text-xl text-light-text dark:text-dark-text">
           <div className="my-auto mr-4">
             {folderOpen ? (
               <BiDownArrow className="my-auto" />

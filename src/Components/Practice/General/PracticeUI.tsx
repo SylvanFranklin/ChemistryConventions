@@ -5,6 +5,7 @@ import { Results } from "./Results";
 import { PracticeSettings } from "./settings";
 
 interface PracticeUIProps {
+  quizName: string;
   correctAnswer: string;
   checkAnswer: Function;
   newQuestion: Function;
@@ -37,10 +38,16 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
 
   return (
     <div className="mx-auto h-96 w-1/2 rounded-md border-2 p-8 text-light-text dark:text-dark-text">
-      <GoThreeBars
-        onClick={() => setShowingSettings(!showingSettings)}
-        className="m-[-1rem] text-3xl"
-      />
+      <div className="flex w-full flex-row -mt-2">
+        <GoThreeBars
+          onClick={() => setShowingSettings(!showingSettings)}
+          className="text-3xl"
+        />
+
+        <h1 className="text-standard my-auto ml-auto text-right">
+          {props.quizName}
+        </h1>
+      </div>
 
       {showingSettings ? (
         <PracticeSettings>{props.settings}</PracticeSettings>
@@ -61,5 +68,3 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
     </div>
   );
 };
-
-
