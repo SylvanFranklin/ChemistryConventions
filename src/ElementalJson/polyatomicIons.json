@@ -1,66 +1,79 @@
 {
   "Acetate": {
+    "charge": -1,
     "symbol": "C_2H_3O_2",
     "name": "Acetate",
     "category": "PolyAtomic Ions"
   },
   "Ammonium": {
+    "charge": -1,
     "symbol": "NH_4",
     "name": "Ammonium",
     "category": "PolyAtomic Ions"
   },
   "Bicarbonate": {
+    "charge": -1,
     "symbol": "HCO_3",
     "name": "Bicarbonate",
     "category": "PolyAtomic Ions"
   },
   "Carbonate": {
-    "symbol": "CO_3^2",
+    "charge": -2,
+    "symbol": "CO_3",
     "name": "Carbonate",
     "category": "PolyAtomic Ions"
   },
   "Cyanide": {
+    "charge": -1,
     "symbol": "CN",
     "name": "Cyanide",
     "category": "PolyAtomic Ions"
   },
   "Bisulfate": {
+    "charge": -1,
     "symbol": "HSO_4",
     "name": "Bisulfate",
     "category": "PolyAtomic Ions"
   },
   "Hydroxide": {
+    "charge": -1,
     "symbol": "OH",
     "name": "Hydroxide",
     "category": "PolyAtomic Ions"
   },
   "Nitrate": {
+    "charge": -1,
     "symbol": "NO_3",
     "name": "Nitrate",
     "category": "PolyAtomic Ions"
   },
   "Nitrite": {
+    "charge": -1,
     "symbol": "NO_2",
     "name": "Nitrite",
     "category": "PolyAtomic Ions"
   },
   "Peroxide": {
-    "symbol": "O_2^2",
+    "charge": 2,
+    "symbol": "O_2",
     "name": "Peroxide",
     "category": "PolyAtomic Ions"
   },
   "Phosphate": {
-    "symbol": "PO_4^3",
+    "charge": -3,
+    "symbol": "PO_4",
     "name": "Phosphate",
     "category": "PolyAtomic Ions"
   },
   "Sulfate": {
-    "symbol": "SO_4^2",
+    "charge": -2,
+    "symbol": "SO_4",
     "name": "Sulfate",
     "category": "PolyAtomic Ions"
   },
   "Sulfite": {
-    "symbol": "SO_3^2",
+    "charge": -2,
+    "symbol": "SO_3",
     "name": "Sulfite",
     "category": "PolyAtomic Ions"
   }

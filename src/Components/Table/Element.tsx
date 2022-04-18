@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 export interface ElementProps {
+  charge?: number;
   setActive?: Function;
   size?: number;
   name?: string;

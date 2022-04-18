@@ -67,12 +67,16 @@ export const ide = (name: string) => {
 };
 
 export const charge = (element: ElementProps) => {
-  if (element.shells[element.shells.length - 1] <= 4) {
-    return element.shells[element.shells.length - 1];
-  } else if (element.shells[element.shells.length - 1] > 4) {
-    return -1 * (8 - element.shells[element.shells.length - 1]);
+  if (element.category === "PolyAtomic Ions") {
+    return element.charge ? element.charge : -1;
   } else {
-    return -1;
+    if (element.shells[element.shells.length - 1] <= 4) {
+      return element.shells[element.shells.length - 1];
+    } else if (element.shells[element.shells.length - 1] > 4) {
+      return -1 * (8 - element.shells[element.shells.length - 1]);
+    } else {
+      return -1;
+    }
   }
 };
 
@@ -87,6 +91,7 @@ export const lcm = (n1: number, n2: number) => {
   return (n1 * n2) / gcd(n1, n2);
 };
 
+//  !often throws errors when called with the wrong numbers
 export const gcd = (num1: number, num2: number) => {
   while (num1 !== num2) {
     if (num1 > num2) {

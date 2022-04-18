@@ -25,7 +25,11 @@ export const IonicNaming: React.FC = () => {
       metalcharge = `(${romanize(Math.abs(charge(ions.metal)))}) `;
     }
 
-    return `${ions.metal.name} ${metalcharge} ${ide(ions.nonmetal.name)}`;
+    return `${ions.metal.name} ${metalcharge} ${
+      ions.nonmetal.category === "PolyAtomic Ions"
+        ? ions.nonmetal.name
+        : ide(ions.nonmetal.name)
+    }`;
   };
 
   const Formula = (ions: IonicCompound) => {
@@ -38,7 +42,7 @@ export const IonicNaming: React.FC = () => {
     const subMetalCharge = metalCharge !== 1 ? metalCharge : "";
     const subNonmetalCharge = nonmetalCharge !== 1 ? nonmetalCharge : "";
 
-    return `${ions.metal.symbol}_${subMetalCharge}${ions.nonmetal.symbol}_${subNonmetalCharge}`;
+    return `${ions.metal.symbol}_${subMetalCharge}(${ions.nonmetal.symbol})_${subNonmetalCharge}`;
   };
 
   const NewIons = () => {

@@ -13,7 +13,6 @@ interface NamingProps {
 
 export const Naming: React.FC<NamingProps> = (props) => {
   const [Ions, setIons] = useState(props.newIons());
-
   const [quizFormula, setQuizFormula] = useState(false);
 
   return (
