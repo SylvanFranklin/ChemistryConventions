@@ -42,7 +42,15 @@ export const IonicNaming: React.FC = () => {
     const subMetalCharge = metalCharge !== 1 ? metalCharge : "";
     const subNonmetalCharge = nonmetalCharge !== 1 ? nonmetalCharge : "";
 
-    return `${ions.metal.symbol}_${subMetalCharge}(${ions.nonmetal.symbol})_${subNonmetalCharge}`;
+    let nonmetal = "";
+
+    if (ions.nonmetal.category === "PolyAtomic Ions") {
+      nonmetal = `(${ions.nonmetal.symbol})`;
+    } else {
+      nonmetal = `${ions.nonmetal.symbol}`;
+    }
+
+    return `${ions.metal.symbol}_${subMetalCharge}${nonmetal}_${subNonmetalCharge}`;
   };
 
   const NewIons = () => {
