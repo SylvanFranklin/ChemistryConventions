@@ -3,7 +3,7 @@ import elementJSON from "../../../Elemental Json/goodElements.json";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { BigElement } from "../../Table/BigElement";
 import { CheckAnswer, randomElement } from "../General/helperFunctions";
-import { PracticeUI } from "../General/Results";
+import { PracticeUI } from "../General/PracticeUI";
 import { Setting } from "../General/settings";
 
 interface ConfigurationProps {

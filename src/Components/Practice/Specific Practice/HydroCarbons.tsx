@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckAnswer, randInt } from "../General/helperFunctions";
 import DefaultLayout from "../../../Page Layouts/Default";
-import { PracticeUI } from "../General/Results";
+import { PracticeUI } from "../General/PracticeUI";
 import { Naming } from "../General/Naming";
 
 export const HydroCarbonNaming: React.FC = () => {
