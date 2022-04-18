@@ -36,9 +36,9 @@ export const Naming: React.FC<NamingProps> = (props) => {
           </PracticeSettings>
         }
       >
-        <h1 className="mb-16 text-3xl text-center">
+        <div className="mb-16 text-center text-3xl">
           {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}
-        </h1>
+        </div>
       </PracticeUI>
     </DefaultLayout>
   );

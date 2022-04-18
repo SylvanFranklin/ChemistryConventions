@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
 import { addScripts } from "./helperFunctions";
 import { PracticeSettings } from "./settings";
@@ -16,6 +16,10 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
   const [showingSettings, setShowingSettings] = useState(false);
   const [userInput, setUserInput] = useState("");
 
+  const toggleResults = () => {
+    setShowingResults(false);
+  };
+
   const newQuestion = () => {
     props.newQuestion();
   };
@@ -32,10 +36,10 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
   };
 
   return (
-    <div className="w-1/2 p-8 mx-auto border-2 rounded-md h-96 text-light-text dark:text-dark-text">
+    <div className="mx-auto h-96 w-1/2 rounded-md border-2 p-8 text-light-text dark:text-dark-text">
       <GoThreeBars
         onClick={() => setShowingSettings(!showingSettings)}
-        className="text-3xl m-[-1rem]"
+        className="m-[-1rem] text-3xl"
       />
 
       {showingSettings ? (
@@ -46,7 +50,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
             <Results
               userInput={userInput}
               correctAnswer={props.correctAnswer}
-              setShowingResults={setShowingResults}
+              setShowingResults={toggleResults}
               newQuestion={newQuestion}
             />
           ) : (
@@ -65,29 +69,43 @@ interface ResultsProps {
   newQuestion: Function;
 }
 const Results: React.FC<ResultsProps> = (props) => {
+  const Okay = () => {
+    props.setShowingResults();
+    props.newQuestion();
+    return;
+  };
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      e.preventDefault();
+      if (e.key === "Enter") {
+        Okay();
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col justify-end h-full">
-      <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
+    <div className="flex h-full flex-col justify-end">
+      <h1 className="mt-3 overflow-x-auto text-center text-xl font-bold">
         Your Answer
       </h1>
-      <div className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+      <div className="text-md bg-standard mt-3 h-20 overflow-x-auto text-center">
         {props.userInput}
       </div>
 
-      <h1 className="mt-3 overflow-x-auto text-xl font-bold text-center">
+      <h1 className="mt-3 overflow-x-auto text-center text-xl font-bold">
         Correct Answer
       </h1>
-      <div className="h-20 mt-3 overflow-x-auto text-center text-md bg-standard">
+      <div className="text-md bg-standard mt-3 h-20 overflow-x-auto text-center">
         {addScripts(props.correctAnswer)}
       </div>
 
-      <button
-        onClick={() => {
-          props.setShowingResults(false);
-          props.newQuestion();
-        }}
-        className="mx-auto mt-3 button-standard"
-      >
+      <button onClick={Okay} className="button-standard mx-auto mt-3">
         Okay
       </button>
     </div>
@@ -100,7 +118,7 @@ interface QuestionProps {
 
 const Question: React.FC<QuestionProps> = (props) => {
   return (
-    <div className="flex flex-col justify-end h-full">
+    <div className="flex h-full flex-col justify-end">
       {props.children}
 
       <div className="mt-10 mb-10">
