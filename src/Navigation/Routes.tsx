@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PeriodicTable from "../Components/Table/PeriodicTable";
-import { CovalentNaming } from "../Components/Practice/Specific Practice/CovalentNaming";
-import { HydroCarbonNaming } from "../Components/Practice/Specific Practice/HydroCarbons";
-import { IonicNaming } from "../Components/Practice/Specific Practice/ionicNaming";
-import ShellConfiguration from "../Components/Practice/Specific Practice/ShellConfiguration";
+import { CovalentNaming } from "../Components/Practice/SpecificPractice/CovalentNaming";
+import { HydroCarbonNaming } from "../Components/Practice/SpecificPractice/HydroCarbons";
+import { IonicNaming } from "../Components/Practice/SpecificPractice/ionicNaming";
+import ShellConfiguration from "../Components/Practice/SpecificPractice/ShellConfiguration";
 import DefaultLayout from "../Page Layouts/Default";
 import QuizzesLayout from "../Page Layouts/QuizSelection";
 

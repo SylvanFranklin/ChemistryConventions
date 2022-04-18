@@ -1,6 +1,8 @@
 import metals from "../../../Elemental Json/metals.json";
 import nonmetals from "../../../Elemental Json/nonmetals.json";
+import polyAtomics from "../../../Elemental Json/polyatomicIons.json";
 import { ElementProps } from "../../Table/Element";
+
 import {
   charge,
   gcd,
@@ -46,5 +48,12 @@ export const IonicNaming: React.FC = () => {
     };
   };
 
-  return <Naming Formula={Formula} Name={Name} newIons={() => NewIons()} QuizName={'Ionic Compounds'} />;
+  return (
+    <Naming
+      Formula={Formula}
+      Name={Name}
+      newIons={() => NewIons()}
+      QuizName={"Ionic Compounds"}
+    />
+  );
 };
