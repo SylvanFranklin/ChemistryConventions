@@ -19,10 +19,6 @@ export const AppRoutes: React.FC = () => {
           path="practice/shellconfiguration"
           element={<ShellConfiguration semantic={false} />}
         />
-        <Route
-          path="practice/shellconfiguration/semantic"
-          element={<ShellConfiguration semantic={true} />}
-        />
         <Route path="practice/naming/ionic" element={<IonicNaming />} />
         <Route path="practice/naming/covalent" element={<CovalentNaming />} />
         <Route

@@ -18,10 +18,6 @@ export const QuizzesLayout: FunctionComponent<QuizzesLayoutProps> = () => {
         </QuizFolder>
 
         <Quiz name="shell configuration" path="shellconfiguration" />
-        <Quiz
-          name="shell configuration semantic"
-          path="shellconfiguration/semantic"
-        />
       </div>
     </DefaultLayout>
   );

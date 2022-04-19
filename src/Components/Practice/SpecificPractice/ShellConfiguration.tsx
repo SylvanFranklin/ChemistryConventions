@@ -4,12 +4,15 @@ import DefaultLayout from "../../../Page Layouts/Default";
 import { BigElement } from "../../Table/BigElement";
 import { CheckAnswer, randomElement } from "../General/helperFunctions";
 import { PracticeUI } from "../General/PracticeUI";
+import { PracticeSettings, Setting } from "../General/settings";
 
 interface ConfigurationProps {
   semantic: boolean;
 }
 
 const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
+  const [semantic, setSemantic] = useState(props.semantic);
+
   const [currentElement, setCurrentElement] = useState({
     ...randomElement(elementJSON),
   });
@@ -18,24 +21,30 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
     <DefaultLayout>
       <PracticeUI
         correctAnswer={
-          props.semantic
+          semantic
             ? currentElement.electron_configuration_semantic
             : currentElement.electron_configuration
         }
         checkAnswer={(text: string) =>
           CheckAnswer(
             text,
-            props.semantic
+            semantic
               ? currentElement.electron_configuration_semantic
               : currentElement.electron_configuration
           )
         }
         newQuestion={() => setCurrentElement(randomElement(elementJSON))}
-        settings={null}
+        settings={
+          <PracticeSettings>
+            <Setting
+              name={"question type"}
+              value={semantic ? "Semantic" : "normal"}
+              setter={() => setSemantic(!semantic)}
+            />
+          </PracticeSettings>
+        }
         quizName={
-          props.semantic
-            ? "Semantic Shell Configuration"
-            : "Shell Configuration"
+          semantic ? "Semantic Shell Configuration" : "Shell Configuration"
         }
       >
         <div className="mx-auto">
