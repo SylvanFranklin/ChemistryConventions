@@ -55,7 +55,7 @@
   },
   "Peroxide": {
     "charge": 2,
-    "symbol": "O_2",
+    "symbol": "H_2O_2",
     "name": "Peroxide",
     "category": "PolyAtomic Ions"
   },
