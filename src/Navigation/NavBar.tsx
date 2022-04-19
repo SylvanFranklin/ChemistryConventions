@@ -4,12 +4,12 @@ import NavItem from "./NavItem";
 
 const NavBar: FC = () => {
   return (
-    <div className="flex flex-row justify-end h-16 px-4 mx-auto mb-10 border-b text-light-text dark:text-dark-text">
+    <div className="mx-auto mb-10 flex h-16 flex-row justify-end border-b-2 px-4 text-light-text dark:border-dark-gray dark:text-dark-text">
       {/* <NavItem>
         <Search></Search>
       </NavItem> */}
       <NavItem location={"/"}>
-        <h1 className="bg-gradient-to-r from-[#b56576] to-[#e56b6f] py-2 px-4 rounded-md text-white">
+        <h1 className="rounded-md bg-gradient-to-r from-[#b56576] to-[#e56b6f] py-2 px-4 text-white">
           Table
         </h1>
       </NavItem>
