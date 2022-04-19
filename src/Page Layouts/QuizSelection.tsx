@@ -15,6 +15,7 @@ export const QuizzesLayout: FunctionComponent<QuizzesLayoutProps> = () => {
           <Quiz name="Covalent Compounds" path="naming/covalent" />
           <Quiz name="hydrocarbons" path="naming/hydrocarbons" />
           <Quiz name="Polyatomic Ions" path="naming/polyatomicions" />
+          <Quiz name="Acids" path="naming/acids" />
         </QuizFolder>
 
         <Quiz name="shell configuration" path="shellconfiguration" />

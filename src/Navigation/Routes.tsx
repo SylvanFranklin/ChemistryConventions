@@ -7,6 +7,7 @@ import ShellConfiguration from "../Components/Practice/SpecificPractice/ShellCon
 import DefaultLayout from "../Page Layouts/Default";
 import QuizzesLayout from "../Page Layouts/QuizSelection";
 import { PolyAtomicNaming } from "../Components/Practice/SpecificPractice/PolyAtomicNaming";
+import { AcidsNaming } from "../Components/Practice/SpecificPractice/AcidsNaming";
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ export const AppRoutes: React.FC = () => {
           path="practice/naming/hydrocarbons"
           element={<HydroCarbonNaming />}
         />
+        <Route path="practice/naming/acids" element={<AcidsNaming />} />
       </Routes>
     </BrowserRouter>
   );
