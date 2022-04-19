@@ -9,9 +9,7 @@ const NavBar: FC = () => {
         <Search></Search>
       </NavItem> */}
       <NavItem location={"/"}>
-        <h1 className="rounded-md bg-gradient-to-r from-[#b56576] to-[#e56b6f] py-2 px-4 text-white">
-          Table
-        </h1>
+        <h1 className="">Table</h1>
       </NavItem>
       <NavItem location={"/practice"}>
         <h1>Practice</h1>
