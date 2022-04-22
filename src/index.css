@@ -7,7 +7,7 @@
     @apply text-5xl font-bold text-light-text dark:text-dark-text;
   }
 
-  .text-stadard {
+  .text-standard {
     @apply font-bold text-light-text dark:text-dark-text;
   }
 

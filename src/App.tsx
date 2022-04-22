@@ -1,6 +1,7 @@
 import { createContext, FunctionComponent, useState } from "react";
 import React from "react";
 import { AppRoutes } from "./Navigation/Routes";
+import { Outlet, Routes } from "react-router-dom";
 
 export const darkModeContext = createContext(null);
 

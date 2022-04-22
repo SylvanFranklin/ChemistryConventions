@@ -8,15 +8,9 @@ const NavBar: FC = () => {
       {/* <NavItem>
         <Search></Search>
       </NavItem> */}
-      <NavItem location={"/"}>
-        <h1 className="">Table</h1>
-      </NavItem>
-      <NavItem location={"/practice"}>
-        <h1>Practice</h1>
-      </NavItem>
-      <NavItem>
-        <DarkModeSwitch />
-      </NavItem>
+      <NavItem location={"/"} title="Table"></NavItem>
+      <NavItem location={"/practice"} title="Practice"></NavItem>
+      <DarkModeSwitch />
     </div>
   );
 };

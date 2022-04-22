@@ -6,12 +6,10 @@ import { CheckAnswer, randomElement } from "../General/helperFunctions";
 import { PracticeUI } from "../General/PracticeUI";
 import { PracticeSettings, Setting } from "../General/settings";
 
-interface ConfigurationProps {
-  semantic: boolean;
-}
+interface ConfigurationProps {}
 
 const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
-  const [semantic, setSemantic] = useState(props.semantic);
+  const [semantic, setSemantic] = useState(false);
 
   const [currentElement, setCurrentElement] = useState({
     ...randomElement(elementJSON),
