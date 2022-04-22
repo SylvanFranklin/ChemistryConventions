@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "./Default";
 import React from "react";
@@ -45,6 +45,7 @@ const Quiz: FunctionComponent<QuizProps> = (props) => {
 };
 
 interface QuizFolderProps {
+  children: ReactNode;
   name: string;
 }
 
