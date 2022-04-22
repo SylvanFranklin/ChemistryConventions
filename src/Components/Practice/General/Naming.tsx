@@ -9,6 +9,7 @@ interface NamingProps {
   Name: Function;
   newIons: Function;
   QuizName: string;
+  children?: React.ReactNode;
 }
 
 export const Naming: React.FC<NamingProps> = (props) => {

@@ -1,17 +1,18 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import { JsxElement } from "typescript";
 import NavBar from "../Navigation/NavBar";
 
 interface DefaultLayoutProps {
   title?: string;
-  specialTitle?: JsxElement;
+  specialTitle?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = (props) => {
   return (
     <div>
       <NavBar />
-      <div className="flex flex-col justify-center select-none ">
+      <div className="flex select-none flex-col justify-center ">
         <h1 className="title text-center">
           {props.specialTitle ? props.specialTitle : props.title}
         </h1>
