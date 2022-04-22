@@ -1,5 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
 import { Question } from "./Question";
 import { Results } from "./Results";
