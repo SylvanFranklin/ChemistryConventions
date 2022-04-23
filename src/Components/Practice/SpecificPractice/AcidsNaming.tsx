@@ -2,12 +2,7 @@ import metals from "../../../ElementalJson/metals.json";
 import nonmetals from "../../../ElementalJson/nonmetals.json";
 import polyAtomics from "../../../ElementalJson/polyatomicIons.json";
 import { ElementProps } from "../../Table/Element";
-import {
-  charge,
-  gcd,
-  randInt,
-  randomElement,
-} from "../General/helperFunctions";
+import { charge, randInt, randomElement } from "../General/helperFunctions";
 import { Naming } from "../General/Naming";
 
 export const AcidsNaming: React.FC = () => {
@@ -17,15 +12,37 @@ export const AcidsNaming: React.FC = () => {
   }
 
   const Name = (ions: acid) => {
-    return "1";
+    // Naming acids
+
+    let newEnding: string = ions.nonmetal.name;
+
+    // ide - hydro ic
+    if (
+      ions.nonmetal.name.endsWith("ide") ||
+      ions.nonmetal.name.endsWith("ine")
+    ) {
+      newEnding = newEnding.replace("ide", "ic");
+      newEnding = `hydro${newEnding}`;
+      // ate - ic
+    } else if (ions.nonmetal.name.endsWith("ate")) {
+      newEnding = newEnding.replace("ate", "ic");
+
+      // ite - ous
+    } else if (ions.nonmetal.name.endsWith("ite")) {
+      newEnding = newEnding.replace("ite", "ous");
+    } else {
+      newEnding = "fail";
+    }
+
+    return newEnding;
   };
 
   const Formula = (ions: acid) => {
-    let hyrdogenCharge: number = Math.abs(charge(ions.hydrogen));
+    let hydrogenCharge: number = Math.abs(charge(ions.hydrogen));
     let nonmetalCharge: number = Math.abs(charge(ions.nonmetal));
 
-    const subHydrogenCharge = hyrdogenCharge !== 1 ? nonmetalCharge : "";
-    const subNonmetalCharge = nonmetalCharge !== 1 ? hyrdogenCharge : "";
+    const subHydrogenCharge = hydrogenCharge !== 1 ? nonmetalCharge : "";
+    const subNonmetalCharge = nonmetalCharge !== 1 ? hydrogenCharge : "";
 
     let nonmetal = "";
 
