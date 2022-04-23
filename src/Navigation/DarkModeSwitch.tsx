@@ -20,7 +20,7 @@ export const DarkModeSwitch: FC = () => {
       }}
     >
       <motion.button
-        className="relative mx-3 flex items-center justify-center text-2xl"
+        className="relative mx-3 flex items-center justify-center text-xl"
         animate={toggleAnimation}
       >
         {!darkMode ? (

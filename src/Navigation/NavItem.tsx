@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface NavItemProps {
-  title?: string;
+  action?: Function;
   location?: string;
+  children?: ReactNode;
 }
 
 const NavItem: FunctionComponent<NavItemProps> = (props) => {
@@ -11,15 +12,17 @@ const NavItem: FunctionComponent<NavItemProps> = (props) => {
 
   return (
     <button
-      className="my-auto flex h-12 w-24 border-l-2 px-3 dark:border-dark-gray"
+      className="my-auto flex h-12 rounded-xl px-5 transition-all duration-100 ease-in-out hover:bg-light-gray dark:hover:bg-dark-gray"
       onClick={() => {
         if (props.location) {
           navigate(props.location);
+        } else if (props.action) {
+          props.action();
         }
       }}
     >
-      <div className="w-18 mx-auto my-auto select-none text-center text-lg">
-        {props.title}
+      <div className="my-auto flex select-none flex-row justify-center text-xl">
+        {props.children}
       </div>
     </button>
   );
