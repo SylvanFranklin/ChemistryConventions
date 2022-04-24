@@ -12,7 +12,7 @@ const NavItem: FunctionComponent<NavItemProps> = (props) => {
 
   return (
     <button
-      className="my-auto flex h-12 rounded-xl px-5 transition-all duration-100 ease-in-out hover:bg-light-gray dark:hover:bg-dark-gray"
+      className={`my-auto flex h-12 place-self-start rounded-xl px-4 transition-all duration-100 ease-in-out hover:bg-light-gray dark:hover:bg-dark-gray`}
       onClick={() => {
         if (props.location) {
           navigate(props.location);
