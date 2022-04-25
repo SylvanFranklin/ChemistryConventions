@@ -31,7 +31,7 @@ export const Results: React.FC<ResultsProps> = (props) => {
   return (
     <div className="flex h-full flex-col justify-end">
       <h1 className="mt-3 overflow-x-auto text-center text-xl font-bold">
-        Your Answer {props.userInput ? '(incorrect)' :  '(blank)'}
+        Your Answer {props.userInput ? "(incorrect)" : "(blank)"}
       </h1>
       <div className="text-md bg-standard mt-3 h-20 overflow-x-auto text-center">
         {props.userInput}

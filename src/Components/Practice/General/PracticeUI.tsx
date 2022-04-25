@@ -11,7 +11,8 @@ interface PracticeUIProps {
   quizName: string;
   correctAnswer: string;
   checkAnswer: Function;
-  newQuestion: Function;
+  newQuestionGenerator: Function;
+  setNewQuestion: Function;
   settings: ReactElement;
   children?: React.ReactNode;
 }
@@ -27,9 +28,11 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
     setShowingResults(false);
   };
 
-  const newQuestion = () => {
-    props.newQuestion();
-  };
+  function newQuestion() {
+    props.setNewQuestion(
+      NewNonDuplicate(props.newQuestionGenerator, props.currentQuestion)
+    );
+  }
 
   const HandleSubmit = (text: string) => {
     if (!props.checkAnswer(text)) {
@@ -43,7 +46,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
         transition: { duration: 2.5, ease: "easeInOut" },
       }));
 
-      NewNonDuplicate(props.newQuestion(), props.currentQuestion);
+      newQuestion();
     }
   };
 

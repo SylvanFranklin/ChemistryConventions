@@ -15,6 +15,10 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
     ...randomElement(elementJSON),
   });
 
+  function newQuestion() {
+    return randomElement(elementJSON);
+  }
+
   return (
     <DefaultLayout>
       <PracticeUI
@@ -31,7 +35,7 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
               : currentElement.electron_configuration
           )
         }
-        newQuestion={() => setCurrentElement(randomElement(elementJSON))}
+        setNewQuestion={(val: Object) => setCurrentElement(val)}
         settings={
           <PracticeSettings>
             <Setting
@@ -44,6 +48,8 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
         quizName={
           semantic ? "Semantic Shell Configuration" : "Shell Configuration"
         }
+        currentQuestion={currentElement}
+        newQuestionGenerator={() => newQuestion()}
       >
         <div className="mx-auto">
           <BigElement {...currentElement} />

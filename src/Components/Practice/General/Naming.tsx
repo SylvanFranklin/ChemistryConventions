@@ -14,7 +14,12 @@ interface NamingProps {
 
 export const Naming: React.FC<NamingProps> = (props) => {
   const [Ions, setIons] = useState(props.newIons());
+
   const [quizFormula, setQuizFormula] = useState(false);
+
+  function newQuestion() {
+    return props.newIons();
+  }
 
   return (
     <DefaultLayout>
@@ -26,7 +31,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
             quizFormula ? props.Formula(Ions) : props.Name(Ions)
           )
         }
-        newQuestion={() => setIons(props.newIons)}
+        setNewQuestion={(val: Object) => setIons(val)}
         settings={
           <PracticeSettings>
             <Setting
@@ -38,6 +43,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
         }
         quizName={`Naming ${props.QuizName}`}
         currentQuestion={Ions}
+        newQuestionGenerator={() => newQuestion()}
       >
         <div className="mb-16 text-center text-3xl">
           {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}
