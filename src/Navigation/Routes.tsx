@@ -13,13 +13,15 @@ export const AppRoutes: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<PeriodicTable />} />
-
         <Route path="practice" element={<QuizzesLayout />} />
-        <Route path="shellconfiguration" element={<ShellConfiguration />} />
+        <Route
+          path="practice/shellconfiguration"
+          element={<ShellConfiguration />}
+        />
         <Route path="practice/naming/ionic" element={<IonicNaming />} />
         <Route path="practice/naming/covalent" element={<CovalentNaming />} />
         <Route
-          path="practice/naming/polyatomicions"
+          path="practice/naming/polyatomic"
           element={<PolyAtomicNaming />}
         />
         <Route

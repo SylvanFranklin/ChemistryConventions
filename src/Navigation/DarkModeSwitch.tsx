@@ -2,16 +2,15 @@ import { motion, useAnimation } from "framer-motion";
 import React, { FC, useContext } from "react";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { darkModeContext } from "../App";
+import NavItem from "./NavItem";
 
 export const DarkModeSwitch: FC = () => {
   const { darkMode, setDarkMode } = useContext(darkModeContext);
-
   const toggleAnimation = useAnimation();
 
   return (
-    <div
-      className="flex"
-      onClick={() => {
+    <NavItem
+      action={() => {
         setDarkMode(!darkMode);
         toggleAnimation.start((i) => ({
           rotate: [-100, 0],
@@ -19,16 +18,18 @@ export const DarkModeSwitch: FC = () => {
         }));
       }}
     >
-      <motion.button
-        className="relative mx-3 flex items-center justify-center text-xl"
-        animate={toggleAnimation}
-      >
-        {!darkMode ? (
-          <BsFillSunFill className="mx-auto" />
-        ) : (
-          <BsFillMoonFill className="mx-auto" />
-        )}
-      </motion.button>
-    </div>
+      <div className="flex">
+        <motion.button
+          className="relative mx-3 flex items-center justify-center text-xl"
+          animate={toggleAnimation}
+        >
+          {!darkMode ? (
+            <BsFillSunFill className="mx-auto" />
+          ) : (
+            <BsFillMoonFill className="mx-auto" />
+          )}
+        </motion.button>
+      </div>
+    </NavItem>
   );
 };

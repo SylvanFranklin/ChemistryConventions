@@ -55,7 +55,7 @@ const PeriodicTable = () => {
 
   return (
     <DefaultLayout title="Table">
-      <div className="mx-auto flex w-min flex-row">
+      <div className="mx-auto  flex w-min flex-row">
         <div className="bg-standard mx-4 flex p-4">{lms}</div>
 
         <ElementInspector currentElement={currentElement} />

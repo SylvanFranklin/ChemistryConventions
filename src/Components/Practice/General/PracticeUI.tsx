@@ -26,11 +26,6 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
   };
 
   const newQuestion = () => {
-    correctAnimation.start((i) => ({
-      borderColor: ["#719c70", "#d8dee9"],
-      transition: { duration: 2.5, ease: "easeInOut" },
-    }));
-
     props.newQuestion();
   };
 
@@ -41,6 +36,10 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
       setUserInput(text);
     } else {
       // setCorrectStreak(correctStreak + 1);
+      correctAnimation.start((correct) => ({
+        borderColor: ["#719c70", "#d8dee9"],
+        transition: { duration: 2.5, ease: "easeInOut" },
+      }));
 
       props.newQuestion();
     }
