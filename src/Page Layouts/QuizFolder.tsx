@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { BiDownArrow, BiRightArrow } from "react-icons/bi";
 import { Quiz, QuizProps } from "./Quiz";
@@ -37,6 +37,7 @@ export const QuizFolder: React.FC<QuizFolderProps> = (props) => {
             <Quiz
               name={quiz.name}
               path={`${props.name.toLowerCase()}/${quiz.path}`}
+              key={quiz.name}
             />
           ))}
         </div>
