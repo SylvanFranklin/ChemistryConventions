@@ -25,7 +25,6 @@ export const HydroCarbonNaming: React.FC = () => {
 
     return `C_${ions.numCarbon}H_${hydrogens}`;
   };
-
   const Name = (ions: HydroCarbonNaming) => {
     const prefixes = [
       "meth",

@@ -1,6 +1,7 @@
 import React from "react";
 import { ElementProps } from "../../Table/Element";
 
+
 export function randInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);

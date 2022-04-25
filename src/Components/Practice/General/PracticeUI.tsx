@@ -1,11 +1,13 @@
 import { motion, useAnimation } from "framer-motion";
 import React, { ReactElement, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
+import { NewNonDuplicate } from "./NewNonDuplicate";
 import { Question } from "./Question";
 import { Results } from "./Results";
 import { PracticeSettings } from "./settings";
 
 interface PracticeUIProps {
+  currentQuestion: Object;
   quizName: string;
   correctAnswer: string;
   checkAnswer: Function;
@@ -41,7 +43,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
         transition: { duration: 2.5, ease: "easeInOut" },
       }));
 
-      props.newQuestion();
+      NewNonDuplicate(props.newQuestion(), props.currentQuestion);
     }
   };
 

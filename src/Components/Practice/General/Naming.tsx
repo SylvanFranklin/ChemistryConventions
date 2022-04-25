@@ -37,6 +37,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
           </PracticeSettings>
         }
         quizName={`Naming ${props.QuizName}`}
+        currentQuestion={Ions}
       >
         <div className="mb-16 text-center text-3xl">
           {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}
