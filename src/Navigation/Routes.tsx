@@ -7,8 +7,12 @@ import { PolyAtomicNaming } from "../Components/Practice/SpecificPractice/PolyAt
 import ShellConfiguration from "../Components/Practice/SpecificPractice/ShellConfiguration";
 import PeriodicTable from "../Components/Table/PeriodicTable";
 import QuizzesLayout from "../Page Layouts/QuizSelection";
+import elementsJSON from "../ElementalJson/table.json";
+import { ElementPage } from "./ElementPage";
 
 export const AppRoutes: React.FC = () => {
+  const elements = elementsJSON;
+
   return (
     <BrowserRouter>
       <Routes>
@@ -29,6 +33,16 @@ export const AppRoutes: React.FC = () => {
           element={<HydroCarbonNaming />}
         />
         <Route path="practice/naming/acids" element={<AcidsNaming />} />
+
+        {Object.values(elements).map((element) => {
+          return (
+            <Route
+              element={<ElementPage {...element}></ElementPage>}
+              path={`element/${element.name.toLowerCase()}`}
+              key={element.name}
+            />
+          );
+        })}
       </Routes>
     </BrowserRouter>
   );

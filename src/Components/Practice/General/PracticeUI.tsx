@@ -52,7 +52,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
 
   return (
     <motion.div
-      className="mx-auto h-96 w-1/2 rounded-md border-8 p-8 text-light-text dark:text-dark-text"
+      className="mx-auto h-96 w-1/2 rounded-md border-standard p-8 text-light-text dark:text-dark-text"
       animate={correctAnimation}
     >
       <TopBar
