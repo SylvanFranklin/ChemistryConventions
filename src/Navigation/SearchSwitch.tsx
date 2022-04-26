@@ -1,12 +1,13 @@
 import { FC } from "react";
-import { BsCommand } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
+import NavItem from "./NavItem";
 
 export const Search: FC = () => {
   return (
-    <div className="flex w-10 h-16 transition-all duration-500">
-      <div className='flex flex-row border-2 border-black rounded-md  h-16 my-auto'>
-        <BsCommand className="my-auto"></BsCommand>
+    <NavItem>
+      <div className="relative mx-3 flex items-center justify-center text-2xl">
+        <BiSearch className='m-auto'/>
       </div>
-    </div>
+    </NavItem>
   );
 };

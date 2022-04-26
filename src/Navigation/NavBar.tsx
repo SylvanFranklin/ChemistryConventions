@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 import NavItem from "./NavItem";
+import { Search } from "./SearchSwitch";
 import { TableButton } from "./TableButton";
 
 const NavBar: FC = () => {
@@ -12,6 +13,7 @@ const NavBar: FC = () => {
         <h2>Practice</h2>
       </NavItem>
       <DarkModeSwitch />
+      <Search />
     </div>
   );
 };
