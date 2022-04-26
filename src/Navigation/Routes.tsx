@@ -7,12 +7,10 @@ import { PolyAtomicNaming } from "../Components/Practice/SpecificPractice/PolyAt
 import ShellConfiguration from "../Components/Practice/SpecificPractice/ShellConfiguration";
 import PeriodicTable from "../Components/Table/PeriodicTable";
 import QuizzesLayout from "../Page Layouts/QuizSelection";
-import elementsJSON from "../ElementalJson/table.json";
 import { ElementPage } from "./ElementPage";
+import { elements } from "./ElementValues";
 
 export const AppRoutes: React.FC = () => {
-  const elements = elementsJSON;
-
   return (
     <BrowserRouter>
       <Routes>

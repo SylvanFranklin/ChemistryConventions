@@ -1,5 +1,7 @@
-import { Dialog, Combobox } from "@headlessui/react";
+import { Combobox, Dialog } from "@headlessui/react";
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { elements } from "./ElementValues";
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -7,7 +9,7 @@ interface CommandPaletteProps {
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
-  const titles = ["3", "5"];
+  const titles = elements.map((element) => element.name);
   const [query, setQuery] = useState("");
   const filteredResults = query
     ? titles.filter((title) =>
@@ -25,7 +27,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, []);
+  });
 
   return (
     <Dialog
@@ -37,7 +39,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
 
       <Combobox
         onChange={(element) => {
-          ("");
+          console.log("navigate or something");
         }}
         value=""
         as="div"
