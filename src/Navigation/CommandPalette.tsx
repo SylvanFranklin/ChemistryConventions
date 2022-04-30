@@ -1,6 +1,5 @@
 import { Combobox, Dialog } from "@headlessui/react";
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 import { elements } from "./ElementValues";
 
 interface CommandPaletteProps {
