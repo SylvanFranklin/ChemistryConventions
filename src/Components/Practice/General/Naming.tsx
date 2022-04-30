@@ -33,13 +33,11 @@ export const Naming: React.FC<NamingProps> = (props) => {
           )
         }
         settings={
-          <PracticeSettings>
-            <Setting
-              name={"Answer With"}
-              value={quizFormula ? "Formula" : "Name"}
-              setter={() => setQuizFormula(!quizFormula)}
-            />
-          </PracticeSettings>
+          <Setting
+            name={"Answer With"}
+            value={quizFormula ? "Formula" : "Name"}
+            setter={() => setQuizFormula(!quizFormula)}
+          />
         }
         quizName={`Naming ${props.QuizName}`}
         newQuestion={newQuestion}
