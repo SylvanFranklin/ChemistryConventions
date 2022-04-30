@@ -9,12 +9,13 @@ interface SettingProps {
 
 export const Setting: React.FC<SettingProps> = (props) => {
   return (
-    <div className="bg-standard m-4 flex flex-row rounded-lg p-3">
+    <div
+      className="bg-standard m-4 flex flex-row rounded-lg p-3"
+      onClick={() => props.setter()}
+    >
       <h1 className="my-auto">{props.name}</h1>
       <div className="mx-auto"></div>
-      <button className="button-standard" onClick={() => props.setter()}>
-        {props.value}
-      </button>
+      <button className="button-standard">{props.value}</button>
     </div>
   );
 };
