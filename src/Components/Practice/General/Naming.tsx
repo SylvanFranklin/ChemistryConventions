@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { addScripts, CheckAnswer } from "./helperFunctions";
+import { NewNonDuplicate } from "./NewNonDuplicate";
 import { PracticeUI } from "./PracticeUI";
 import { PracticeSettings, Setting } from "./settings";
 
@@ -18,7 +19,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
   const [quizFormula, setQuizFormula] = useState(false);
 
   function newQuestion() {
-    return props.newIons();
+    setIons(NewNonDuplicate(props.newIons, Ions));
   }
 
   return (
@@ -31,7 +32,6 @@ export const Naming: React.FC<NamingProps> = (props) => {
             quizFormula ? props.Formula(Ions) : props.Name(Ions)
           )
         }
-        setNewQuestion={(val: Object) => setIons(val)}
         settings={
           <PracticeSettings>
             <Setting
@@ -42,8 +42,7 @@ export const Naming: React.FC<NamingProps> = (props) => {
           </PracticeSettings>
         }
         quizName={`Naming ${props.QuizName}`}
-        currentQuestion={Ions}
-        newQuestionGenerator={() => newQuestion()}
+        newQuestion={newQuestion}
       >
         <div className="mb-16 text-center text-3xl">
           {quizFormula ? props.Name(Ions) : addScripts(props.Formula(Ions))}

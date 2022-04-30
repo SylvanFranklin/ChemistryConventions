@@ -1,18 +1,15 @@
 import { motion, useAnimation } from "framer-motion";
 import React, { ReactElement, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
-import { NewNonDuplicate } from "./NewNonDuplicate";
 import { Question } from "./Question";
 import { Results } from "./Results";
 import { PracticeSettings } from "./settings";
 
 interface PracticeUIProps {
-  currentQuestion: Object;
   quizName: string;
   correctAnswer: string;
   checkAnswer: Function;
-  newQuestionGenerator: Function;
-  setNewQuestion: Function;
+  newQuestion: Function;
   settings: ReactElement;
   children?: React.ReactNode;
 }
@@ -29,9 +26,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
   };
 
   function newQuestion() {
-    props.setNewQuestion(
-      NewNonDuplicate(props.newQuestionGenerator, props.currentQuestion)
-    );
+    props.newQuestion();
   }
 
   const HandleSubmit = (text: string) => {
@@ -52,7 +47,7 @@ export const PracticeUI: React.FC<PracticeUIProps> = (props) => {
 
   return (
     <motion.div
-      className="mx-auto h-96 w-1/2 rounded-md border-standard p-8 text-light-text dark:text-dark-text"
+      className="border-standard mx-auto h-96 w-1/2 rounded-md p-8 text-light-text dark:text-dark-text"
       animate={correctAnimation}
     >
       <TopBar
