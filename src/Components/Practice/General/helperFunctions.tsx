@@ -1,7 +1,6 @@
 import React from "react";
 import { ElementProps } from "../../Table/Element";
 
-
 export function randInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -81,10 +80,15 @@ export const charge = (element: ElementProps) => {
   }
 };
 
-export const randomElement = (obj: { [k: string]: unknown } & object) => {
-  var keys = Object.keys(obj);
+export const randomElement = (elements: object, exclude?: object) => {
+  const lst = Object.values(elements);
 
-  let t: ElementProps = obj[keys[(keys.length * Math.random()) << 0]];
+  let t: ElementProps = lst[randInt(0, lst.length - 1)];
+
+  while (t === exclude) {
+    t = lst[randInt(0, lst.length - 1)];
+  }
+
   return t;
 };
 
