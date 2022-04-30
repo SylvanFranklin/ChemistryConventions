@@ -2,7 +2,12 @@ import metals from "../../../ElementalJson/metals.json";
 import nonmetals from "../../../ElementalJson/nonmetals.json";
 import polyAtomics from "../../../ElementalJson/polyatomicIons.json";
 import { ElementProps } from "../../Table/Element";
-import { charge, randInt, randomElement } from "../General/helperFunctions";
+import {
+  charge,
+  ide,
+  randInt,
+  randomElement,
+} from "../General/helperFunctions";
 import { Naming } from "../General/Naming";
 
 export const AcidsNaming: React.FC = () => {
@@ -16,33 +21,38 @@ export const AcidsNaming: React.FC = () => {
 
     let newEnding: string = ions.nonmetal.name;
 
+    if (ions.nonmetal.category !== "PolyAtomic Ions") {
+      newEnding = ide(newEnding);
+    }
+
     // ide - hydro ic
-    if (
-      ions.nonmetal.name.endsWith("ide") ||
-      ions.nonmetal.name.endsWith("ine")
-    ) {
+    if (newEnding.endsWith("ide") || newEnding.endsWith("ine")) {
       newEnding = newEnding.replace("ide", "ic");
       newEnding = `hydro${newEnding}`;
       // ate - ic
-    } else if (ions.nonmetal.name.endsWith("ate")) {
+    } else if (newEnding.endsWith("ate")) {
       newEnding = newEnding.replace("ate", "ic");
 
       // ite - ous
-    } else if (ions.nonmetal.name.endsWith("ite")) {
+    } else if (newEnding.endsWith("ite")) {
       newEnding = newEnding.replace("ite", "ous");
     } else {
       newEnding = "fail";
     }
 
-    return newEnding;
+    return (
+      newEnding[0].toUpperCase() +
+      newEnding.substring(1).toLowerCase() +
+      " acid"
+    );
   };
 
   const Formula = (ions: acid) => {
     let hydrogenCharge: number = Math.abs(charge(ions.hydrogen));
     let nonmetalCharge: number = Math.abs(charge(ions.nonmetal));
 
-    const subHydrogenCharge = hydrogenCharge !== 1 ? nonmetalCharge : "";
-    const subNonmetalCharge = nonmetalCharge !== 1 ? hydrogenCharge : "";
+    const subHydrogenCharge = nonmetalCharge !== 1 ? nonmetalCharge : "";
+    const subNonmetalCharge = hydrogenCharge !== 1 ? hydrogenCharge : "";
 
     let nonmetal = "";
 
@@ -56,12 +66,14 @@ export const AcidsNaming: React.FC = () => {
   };
 
   const NewIons = () => {
+    let nonmetal =
+      randInt(0, 15) > 9
+        ? randomElement(nonmetals, nonmetals.hydrogen)
+        : randomElement(polyAtomics, polyAtomics.Hydroxide);
+
     return {
       hydrogen: metals.hydrogen,
-      nonmetal:
-        randInt(0, 1) === 1
-          ? randomElement(nonmetals)
-          : randomElement(polyAtomics),
+      nonmetal: nonmetal,
     };
   };
 
@@ -69,7 +81,7 @@ export const AcidsNaming: React.FC = () => {
     <Naming
       Formula={Formula}
       Name={Name}
-      newIons={() => NewIons()}
+      newIons={NewIons}
       QuizName={"Acids"}
     />
   );
