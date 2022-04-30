@@ -3,6 +3,7 @@ import elementJSON from "../../../ElementalJson/goodElements.json";
 import DefaultLayout from "../../../Page Layouts/Default";
 import { BigElement } from "../../Table/BigElement";
 import { CheckAnswer, randomElement } from "../General/helperFunctions";
+import { NewNonDuplicate } from "../General/NewNonDuplicate";
 import { PracticeUI } from "../General/PracticeUI";
 import { PracticeSettings, Setting } from "../General/settings";
 
@@ -16,7 +17,9 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
   });
 
   function newQuestion() {
-    return randomElement(elementJSON);
+    setCurrentElement(
+      NewNonDuplicate(() => randomElement(elementJSON), currentElement)
+    );
   }
 
   return (
@@ -35,7 +38,6 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
               : currentElement.electron_configuration
           )
         }
-        setNewQuestion={(val: Object) => setCurrentElement(val)}
         settings={
           <PracticeSettings>
             <Setting
@@ -48,8 +50,7 @@ const ShellConfiguration: FunctionComponent<ConfigurationProps> = (props) => {
         quizName={
           semantic ? "Semantic Shell Configuration" : "Shell Configuration"
         }
-        currentQuestion={currentElement}
-        newQuestionGenerator={() => newQuestion()}
+        newQuestion={newQuestion}
       >
         <div className="mx-auto">
           <BigElement {...currentElement} />
