@@ -6,7 +6,7 @@ import { Search } from "./SearchSwitch";
 import { TableButton } from "./TableButton";
 
 const NavBar: FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="mx-40 mb-10 flex h-20 flex-row justify-end text-light-text dark:border-dark-gray dark:text-dark-text">
       <CommandPalette isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -15,8 +15,11 @@ const NavBar: FC = () => {
       <NavItem location={"/practice"}>
         <h2>Practice</h2>
       </NavItem>
+      <NavItem location={"/"}>
+        <h2>Home</h2>
+      </NavItem>
       <DarkModeSwitch />
-      <Search setIsOpen={setIsOpen}/>
+      <Search setIsOpen={setIsOpen} />
     </div>
   );
 };

@@ -2,19 +2,20 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AcidsNaming } from "../Components/Practice/SpecificPractice/AcidsNaming";
 import { CovalentNaming } from "../Components/Practice/SpecificPractice/CovalentNaming";
 import { HydroCarbonNaming } from "../Components/Practice/SpecificPractice/HydroCarbonsNaming";
-import { IonicNaming } from "../Components/Practice/SpecificPractice/IonicNaming";
+import { IonicNaming } from "../Components/Practice/SpecificPractice/ionicNaming";
 import { PolyAtomicNaming } from "../Components/Practice/SpecificPractice/PolyAtomicNaming";
 import ShellConfiguration from "../Components/Practice/SpecificPractice/ShellConfiguration";
 import PeriodicTable from "../Components/Table/PeriodicTable";
 import QuizzesLayout from "../Page Layouts/QuizSelection";
 import { ElementPage } from "./ElementPage";
 import { elements } from "./ElementValues";
+import Landing from "./LandingPage";
 
 export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<PeriodicTable />} />
+        <Route path="table" element={<PeriodicTable />} />
         <Route path="practice" element={<QuizzesLayout />} />
         <Route
           path="practice/shellconfiguration"
@@ -41,6 +42,8 @@ export const AppRoutes: React.FC = () => {
             />
           );
         })}
+
+        <Route path="/" element={<Landing />} />
       </Routes>
     </BrowserRouter>
   );
