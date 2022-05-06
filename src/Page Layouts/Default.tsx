@@ -9,9 +9,9 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = (props) => {
   return (
-    <div>
+    <div >
       <NavBar />
-      <div className="flex h-full select-none flex-col justify-center">
+      <div className="flex h-max select-none flex-col justify-center">
         <h1 className="title text-center">
           {props.specialTitle ? props.specialTitle : props.title}
         </h1>

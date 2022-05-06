@@ -9,7 +9,7 @@ const App: FunctionComponent = () => {
   return (
     <darkModeContext.Provider value={{ darkMode, setDarkMode }}>
       <div className={`${darkMode ? "dark" : ""}`}>
-        <div className="h-[100vh] dark:bg-dark-60">
+        <div className="h-full min-h-screen dark:bg-dark-60">
           <AppRoutes />
         </div>
       </div>

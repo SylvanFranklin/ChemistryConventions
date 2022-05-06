@@ -15,24 +15,26 @@
     @apply bg-light-gray dark:bg-dark-gray dark:brightness-110;
   }
   .button-standard {
-
     @apply flex-shrink-0 select-none rounded-md bg-[#355070]  py-1  px-2 text-lg text-white transition-all delay-75 duration-700 hover:bg-[#6d597a];
   }
 
   .border-standard {
-    @apply border-8 dark:border-dark-text
+    @apply border-8 dark:border-dark-text;
   }
-
-
 }
-body {
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+
+/* these two in conjunction disable overscrolling */
+html {
   overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
   display: none;
+  width: 12px;
 }
