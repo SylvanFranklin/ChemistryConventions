@@ -12,10 +12,10 @@
 # production
 /build
 /dist
-.firebase
+/.firebase
 .firebaserc
 firebase.json
-.github
+/.github
 
 # misc
 .DS_Store
