@@ -28,4 +28,3 @@ export const Search: FC<SearchProps> = (props) => {
   );
 };
 
-//testing
