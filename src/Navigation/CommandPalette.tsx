@@ -43,6 +43,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
     );
   }
 
+
+   
+
   return (
     <>
       {props.isOpen && (
