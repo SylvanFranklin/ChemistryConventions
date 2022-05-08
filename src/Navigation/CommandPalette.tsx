@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import elements from "../ElementalJson/table.json";
 
@@ -10,13 +10,13 @@ interface PaletteItemProps {
 
 const PaletteItem: React.FC<PaletteItemProps> = (props) => {
   return (
-    <li
+    <span
       onClick={() => props.action()}
       className="text-standard bg-standard flex flex-row p-4 text-lg hover:brightness-90"
     >
       {props.title}
       <h3 className="ml-auto mr-4 text-gray-400">{props.description}</h3>
-    </li>
+    </span>
   );
 };
 
@@ -33,23 +33,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
     PaletteItems.push({
       title: element.name,
       action: () => {
-        props.setIsOpen(false)
+        props.setIsOpen(false);
         navigate(`/element/${element.name}`);
-
       },
       description: "element",
     });
   }
 
-  const [query, setQuery] = useState("Bo");
+  const [query, setQuery] = useState("");
 
   const filteredResults = query
     ? PaletteItems.filter((item) => {
         if (item.title.toLowerCase().includes(query.toLowerCase())) {
+          // console.log(`query ${query}`)
+          // console.log(item.title);
           return true;
+        } else {
+          return false;
         }
-
-        return false;
       })
     : [];
 
@@ -64,7 +65,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
             onClick={(e) => e.stopPropagation()}
             className="bg-standard fixed top-0 right-0 left-0 z-50 mx-auto mt-32 h-1/2 w-1/2 overflow-scroll rounded-lg"
           >
-            <form className="" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className=""
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log(filteredResults);
+              }}
+            >
               <input
                 type="text"
                 className="text-standard bg-standard fixed block w-1/2 rounded-t-lg border-b-2 p-4 text-lg focus:outline-none dark:border-slate-600"
@@ -75,18 +82,22 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
                   setQuery(e.target.value);
                 }}
               ></input>
-              <ol>
-                {filteredResults.map((item) => (
-                  <PaletteItem
-                    title={item.title}
-                    action={() => {
-                      item.action();
-                    }}
-                    description={item.description}
-                    key={item.title}
-                  />
-                ))}
-              </ol>
+              <div>
+                {filteredResults.map((result) => {
+                  console.log();
+
+                  return (
+                    <PaletteItem
+                      title={result.title}
+                      action={() => {
+                        result.action();
+                      }}
+                      description={result.description}
+                      key={result.title}
+                    />
+                  );
+                })}
+              </div>
             </form>
           </div>
         </div>
