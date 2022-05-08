@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import elements from "../ElementalJson/table.json";
 
@@ -26,25 +26,32 @@ interface CommandPaletteProps {
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
-  let PaletteItems: ReactNode[] = [];
+  let PaletteItems: PaletteItemProps[] = [];
   let navigate = useNavigate();
 
   for (const element of Object.values(elements)) {
-    PaletteItems.push(
-      <PaletteItem
-        title={element.name}
-        action={() => {
-          props.setIsOpen(false);
-          navigate(`/element/${element.name}`);
-        }}
-        description={"element"}
-        key={element.name}
-      />
-    );
+    PaletteItems.push({
+      title: element.name,
+      action: () => {
+        props.setIsOpen(false)
+        navigate(`/element/${element.name}`);
+
+      },
+      description: "element",
+    });
   }
 
+  const [query, setQuery] = useState("Bo");
 
-   
+  const filteredResults = query
+    ? PaletteItems.filter((item) => {
+        if (item.title.toLowerCase().includes(query.toLowerCase())) {
+          return true;
+        }
+
+        return false;
+      })
+    : [];
 
   return (
     <>
@@ -64,8 +71,22 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
                 placeholder="Search for elements, compounds, or quizzes..."
                 autoFocus
                 autoComplete="false"
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
               ></input>
-              <ol>{PaletteItems}</ol>
+              <ol>
+                {filteredResults.map((item) => (
+                  <PaletteItem
+                    title={item.title}
+                    action={() => {
+                      item.action();
+                    }}
+                    description={item.description}
+                    key={item.title}
+                  />
+                ))}
+              </ol>
             </form>
           </div>
         </div>
