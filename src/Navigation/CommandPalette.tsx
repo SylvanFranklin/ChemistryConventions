@@ -1,6 +1,24 @@
-import { Combobox, Dialog } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { elements } from "./ElementValues";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import elements from "../ElementalJson/table.json";
+
+interface PaletteItemProps {
+  title: string;
+  action: Function;
+  description: string;
+}
+
+const PaletteItem: React.FC<PaletteItemProps> = (props) => {
+  return (
+    <span
+      onClick={() => props.action()}
+      className="text-standard bg-standard flex flex-row p-4 text-lg hover:brightness-90"
+    >
+      {props.title}
+      <h3 className="ml-auto mr-4 text-gray-400">{props.description}</h3>
+    </span>
+  );
+};
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -8,79 +26,88 @@ interface CommandPaletteProps {
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
-  const titles = elements.map((element) => element.name);
+  let PaletteItems: PaletteItemProps[] = [];
+  let navigate = useNavigate();
+
+  for (const element of Object.values(elements)) {
+    PaletteItems.push({
+      title: element.name,
+      action: () => {
+        props.setIsOpen(false);
+        navigate(`/element/${element.name}`);
+      },
+      description: "element",
+    });
+  }
+
+
+
+
   const [query, setQuery] = useState("");
+
   const filteredResults = query
-    ? titles.filter((title) =>
-        title.toLowerCase().includes(query.toLowerCase())
-      )
+    ? PaletteItems.filter((item) => {
+        if (item.title.toLowerCase().includes(query.toLowerCase())) {
+          return true;
+        } else {
+          return false;
+        }
+      })
     : [];
 
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey))
-        props.setIsOpen((value: Boolean) => !value);
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  });
-
   return (
-    <Dialog
-      open={props.isOpen}
-      onClose={() => props.setIsOpen(!props.isOpen)}
-      className="fixed inset-0 overflow-y-auto p-4 pt-[25vh]"
-    >
-      <Dialog.Overlay className="fixed inset-0 bg-gray-500/75" />
-
-      <Combobox
-        onChange={(element) => {
-          console.log("navigate or something");
-        }}
-        value=""
-        as="div"
-        className="relative mx-auto max-w-xl divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black/5"
-      >
-        <div className="flex items-center px-4">
-          <Combobox.Input
-            className="h-12 w-full bg-transparent p-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0"
-            placeholder="search..."
-            autoComplete="off"
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-        </div>
-
-        {filteredResults.length > 0 && (
-          <Combobox.Options
-            static
-            className="max-h-96 overflow-y-auto py-4 text-sm"
+    <>
+      {props.isOpen && (
+        <div
+          className="fixed top-0 right-0 z-20 h-full w-full bg-black bg-opacity-40"
+          onClick={() => props.setIsOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-standard fixed top-0 right-0 left-0 z-50 mx-auto mt-32 h-1/2 w-1/2 overflow-scroll rounded-lg"
           >
-            {filteredResults.map((title, index) => {
-              return (
-                <Combobox.Option key={index} value={title}>
-                  {({ active }) => (
-                    <div
-                      className={`px-4 py-2 ${
-                        active ? "bg-gray-200" : "bg-white"
-                      }`}
-                    >
-                      {title}
-                    </div>
-                  )}
-                </Combobox.Option>
-              );
-            })}
-          </Combobox.Options>
-        )}
-        {query && filteredResults.length === 0 && (
-          <p className="p-4 text-sm text-gray-500">No results found</p>
-        )}
-      </Combobox>
-    </Dialog>
+            <form
+              className=""
+              onSubmit={(e) => {
+                e.preventDefault();
+                filteredResults[0].action();
+              }}
+            >
+              <input
+                type="text"
+                className="text-standard bg-standard fixed block w-1/2 rounded-t-lg border-b-2 p-4 text-lg focus:outline-none dark:border-slate-600"
+                placeholder="Search for elements, [compounds, or quizzes... coming soon]"
+                autoFocus
+                autoComplete="false"
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+              ></input>
+
+              <div className="pt-14">
+                {filteredResults.length !== 0 ? (
+                  filteredResults.map((result) => {
+                    return (
+                      <PaletteItem
+                        title={result.title}
+                        action={() => {
+                          result.action();
+                        }}
+                        description={result.description}
+                        key={result.title}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className="text-standard p-4 text-lg">
+
+                  </div>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
