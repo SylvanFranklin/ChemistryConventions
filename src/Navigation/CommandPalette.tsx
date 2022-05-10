@@ -40,13 +40,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
     });
   }
 
+
+
+
   const [query, setQuery] = useState("");
 
   const filteredResults = query
     ? PaletteItems.filter((item) => {
         if (item.title.toLowerCase().includes(query.toLowerCase())) {
-          // console.log(`query ${query}`)
-          // console.log(item.title);
           return true;
         } else {
           return false;
@@ -69,34 +70,39 @@ export const CommandPalette: React.FC<CommandPaletteProps> = (props) => {
               className=""
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log(filteredResults);
+                filteredResults[0].action();
               }}
             >
               <input
                 type="text"
                 className="text-standard bg-standard fixed block w-1/2 rounded-t-lg border-b-2 p-4 text-lg focus:outline-none dark:border-slate-600"
-                placeholder="Search for elements, compounds, or quizzes..."
+                placeholder="Search for elements, [compounds, or quizzes... coming soon]"
                 autoFocus
                 autoComplete="false"
                 onChange={(e) => {
                   setQuery(e.target.value);
                 }}
               ></input>
-              <div>
-                {filteredResults.map((result) => {
-                  console.log();
 
-                  return (
-                    <PaletteItem
-                      title={result.title}
-                      action={() => {
-                        result.action();
-                      }}
-                      description={result.description}
-                      key={result.title}
-                    />
-                  );
-                })}
+              <div className="pt-14">
+                {filteredResults.length !== 0 ? (
+                  filteredResults.map((result) => {
+                    return (
+                      <PaletteItem
+                        title={result.title}
+                        action={() => {
+                          result.action();
+                        }}
+                        description={result.description}
+                        key={result.title}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className="text-standard p-4 text-lg">
+
+                  </div>
+                )}
               </div>
             </form>
           </div>
