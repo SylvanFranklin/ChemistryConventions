@@ -19,10 +19,7 @@ export const DarkModeSwitch: FC = () => {
       }}
     >
       <div className="flex">
-        <motion.div
-          className="relative mx-3 flex items-center justify-center text-xl"
-          animate={toggleAnimation}
-        >
+        <motion.div className="" animate={toggleAnimation}>
           {!darkMode ? (
             <BsFillSunFill className="mx-auto" />
           ) : (

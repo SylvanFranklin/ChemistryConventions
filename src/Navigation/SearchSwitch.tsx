@@ -1,4 +1,5 @@
 import { FC, useEffect } from "react";
+import { BiCommand } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import NavItem from "./NavItem";
 
@@ -21,10 +22,15 @@ export const Search: FC<SearchProps> = (props) => {
 
   return (
     <NavItem action={() => props.setIsOpen(true)}>
-      <div className="relative mx-3 flex items-center justify-center text-2xl">
-        <BiSearch className="m-auto" />
+      <div className="text-standard flex flex-row">
+        <BiSearch className="my-auto text-md" />
+
+        {/* <h1 className="my-auto mx-1">search</h1> */}
+        <div className="ml-1 flex flex-row rounded-md border-2 px-1 text-sm text-gray-600 border-gray-600">
+          <BiCommand className="my-auto" />
+          <h1 className="my-auto ml-1">K</h1>
+        </div>
       </div>
     </NavItem>
   );
 };
-
