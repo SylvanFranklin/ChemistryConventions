@@ -10,12 +10,15 @@ import QuizzesLayout from "../Page Layouts/QuizSelection";
 import { ElementPage } from "./ElementPage";
 import { elements } from "./ElementValues";
 import Landing from "./LandingPage";
+import { Profile } from "./profile";
 
 export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="table" element={<PeriodicTable />} />
+        <Route path="/profile" element={<Profile/>} />
+
         <Route path="practice" element={<QuizzesLayout />} />
         <Route
           path="practice/shellconfiguration"
