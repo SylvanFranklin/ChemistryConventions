@@ -14,30 +14,33 @@ const svg = createAvatar(style, {
 });
 
 export const Profile: React.FC = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   return (
     <DefaultLayout>
       <div className="mx-auto h-full w-1/2 rounded-md p-6">
-        {/* <div
-          className="h-1/6 w-1/6 overflow-clip rounded-full border-4"
-          dangerouslySetInnerHTML={{ __html: svg }}
-        ></div> */}
-
         <>
           {user ? (
-            <div onClick={() => signOut(auth)}>
-              some stats {user.displayName}
+            // <div onClick={() => signOut(auth)}>
+            //   some stats {user.displayName}
+            // </div>
+            <div className="bg-standard flex flex-row rounded-md p-6">
+              <div
+                className="h-1/6 w-1/6 overflow-clip rounded-full border-4"
+                dangerouslySetInnerHTML={{ __html: svg }}
+              ></div>
             </div>
           ) : (
-            <div className="flex flex-row">
-              <div className="mr-16 w-1/2 ">
-                <SignUp />
+            !loading && ( // otherwise render a sign in page
+              <div className="flex flex-row">
+                <div className="mr-16 w-1/2 ">
+                  <SignUp />
+                </div>
+                <div className="ml-16 w-1/2">
+                  <LogIn />
+                </div>
               </div>
-              <div className="ml-16 w-1/2">
-                <LogIn />
-              </div>
-            </div>
+            )
           )}
         </>
       </div>
