@@ -10,7 +10,7 @@ import QuizzesLayout from "../Page Layouts/QuizSelection";
 import { ElementPage } from "./ElementPage";
 import { elements } from "./ElementValues";
 import Landing from "./LandingPage";
-import { Profile } from "./profile";
+import { Profile } from "../auth/profile";
 
 export const AppRoutes: React.FC = () => {
   return (
