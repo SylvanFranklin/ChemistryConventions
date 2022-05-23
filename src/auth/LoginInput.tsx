@@ -1,4 +1,3 @@
-
 interface LoginInputProps {
   password?: boolean;
   placeholder: string;

@@ -1,9 +1,11 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { MdOutlineLogin } from 'react-icons/md'
 import { auth } from "../App";
-import { FriendlyAuthError } from "./freindlyErrors";
+import { FriendlyAuthError } from "./friendlyErrors";
 import { LoginInput } from "./LoginInput";
+import { MdOutlineLogin } from "react-icons/md";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const LogIn: React.FC = () => {
   const login = () => {
@@ -51,10 +53,21 @@ export const LogIn: React.FC = () => {
           type="submit"
         >
           <div className="mx-auto flex flex-row">
-            {/* <MdOutlineLogin className="my-auto mr-2 text-2xl" /> */}
+            <MdOutlineLogin className="my-auto mr-2 text-2xl" />
             Log In
           </div>
         </button>
+        <button
+          className="bg-standard text-standard mt-3 flex flex-row rounded-md p-2 text-lg focus:outline-none "
+          onClick={() => signInWithRedirect(auth, new GoogleAuthProvider())}
+          type="button"
+        >
+          <div className="mx-auto flex flex-row">
+            <FcGoogle className="my-auto mr-2 text-2xl" />
+            or use google
+          </div>
+        </button>
+
         {showingError !== "" && (
           <h1 className="bg-standard text-standard mt-3 rounded-md border-4 border-red-400 p-2 text-center text-lg focus:outline-none">
             {showingError}
