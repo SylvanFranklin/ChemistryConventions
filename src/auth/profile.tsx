@@ -7,10 +7,10 @@ import { auth } from "../App";
 import DefaultLayout from "../Page Layouts/Default";
 import { LogIn } from "./Login";
 import { SignUp } from "./SignUp";
-
+import { RiPencilFill } from "react-icons/ri";
 
 const svg = createAvatar(style, {
-  seed: "custom-seed",
+  seed: "ctm-seed",
   // ... and other options
 });
 
@@ -19,22 +19,25 @@ export const Profile: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <div className="mx-auto h-full w-1/2 rounded-md p-6">
+      <div className="mx-auto h-full w-2/3 rounded-md p-6">
         {user ? (
           // <div onClick={() => signOut(auth)}>
           //   some stats {user.displayName}
           // </div>
-          <div className="bg-standard flex h-max flex-row rounded-md p-6">
-            <div className="flex h-full w-full">
-              <div
-                className="h-1/6 w-1/6 overflow-clip rounded-full border-4"
-                dangerouslySetInnerHTML={{ __html: svg }}
-                onClick={() => auth.signOut()}
-              ></div>
-              <h2 className="text-standard mt-4">
+          <div className="bg-standard flex  flex-row rounded-md p-6">
+            <div className="flex h-full flex-col p-3">
+              <div className="h-full items-end">
+                <div
+                  className=" aspect-square overflow-clip rounded-full border-4"
+                  dangerouslySetInnerHTML={{ __html: svg }}
+                  onClick={() => auth.signOut()}
+                ></div>
+              </div>
+              <h2 className="text-standard mt-4 h-min rounded-md bg-blue-300 p-2">
                 {user.displayName ? user.displayName : "unnamed account"}
               </h2>
             </div>
+            <h1>leaderboards and content coming soon</h1>
           </div>
         ) : (
           !loading && ( // otherwise render a sign in page
