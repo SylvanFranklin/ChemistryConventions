@@ -1,8 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from "firebase/compat";
 import { useState } from "react";
 import { HiUserAdd } from "react-icons/hi";
-import { auth } from "../App";
-import { FriendlyAuthError } from "./freindlyErrors";
+import { FriendlyAuthError } from "./friendlyErrors";
 import { LoginInput } from "./LoginInput";
 
 export const SignUp: React.FC = () => {
@@ -24,6 +23,7 @@ export const SignUp: React.FC = () => {
 
   const [showingError, setShowingError] = useState("");
 
+
   const signUp = (formValue: User) => {
     if (formValue.password !== formValue.confirm_password) {
       setShowingError("passwords do not match");
@@ -35,13 +35,13 @@ export const SignUp: React.FC = () => {
       return;
     }
 
-    createUserWithEmailAndPassword(
-      auth,
-      formValue.email,
-      formValue.password
-    ).catch((error: Error) =>
-      setShowingError(FriendlyAuthError(error.message))
-    );
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(formValue.email, formValue.password)
+      .then((result) => result.user.updateProfile({displayName: formValue.username}))
+      .catch((error: Error) =>
+        setShowingError(FriendlyAuthError(error.message))
+      );
   };
 
   return (
