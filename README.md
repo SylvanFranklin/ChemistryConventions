@@ -1,25 +1,30 @@
 # ChemistryConventions
 
-an interactive website for learning chemistry naming conventions.
-Work in progress. MarkDown to be updated soon
+An interactive website for learning the many naming conventions and formula of chemistry. The website is build with React and Typescript and uses firebase for a backend.
+<br/>
+<br/>
 
-# Live Demo on firebase:
+# Live build on firebase
 
-chemistryconventions.
+[chemconventions.web.app](chemconventions.web.app)
 
+The live build is not intended for end use, and is missing many features.
+<br/>
+<br/>
 
-# Getting started
+# Contribute
 
-clone the repository 
+Any help / suggestions are welcome!
+<br/>
 
-    git clone https://github.com/SylvanFranklin/ChemistryConventions
+clone the repository
 
-install dependencies 
+    git clone https://github.com/SylvanFranklin/ChemistryConventions && cd ChemistryConventions
+
+install dependencies
 
     npm install
 
 start development server
 
     npm start
-    
-
