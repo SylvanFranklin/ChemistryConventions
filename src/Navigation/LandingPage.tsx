@@ -5,7 +5,7 @@ const Landing: React.FC = () => {
     <DefaultLayout title="About the project">
       <div className="text-standard bg-standard mx-auto w-1/2 rounded-lg p-4 text-center text-lg">
         Under Development. See {" "}
-        <a href="https://github.com/SylvanFranklin/ChemistryConventions">
+        <a className="text-blue-400" href="https://github.com/SylvanFranklin/ChemistryConventions">
           Github
         </a>
         {" "}
